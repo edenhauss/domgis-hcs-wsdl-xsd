@@ -15,6 +15,9 @@
 	<wsdl:message name="exportMeteringDeviceDataRequest">
 		<wsdl:part name="exportMeteringDeviceDataRequest" element="hm:exportMeteringDeviceDataRequest"/>
 	</wsdl:message>
+	<wsdl:message name="exportODSPMeteringDeviceDataRequest">
+		<wsdl:part name="exportODSPMeteringDeviceDataRequest" element="hm:exportODSPMeteringDeviceDataRequest"/>
+	</wsdl:message>
 	<wsdl:message name="RequestHeader">
 		<wsdl:part name="Header" element="base:RequestHeader"/>
 	</wsdl:message>
@@ -43,6 +46,9 @@
 		<wsdl:part name="exportHouseRequest" element="hm:exportHouseRequest"/>
 	</wsdl:message>
 	<wsdl:message name="exportMeteringDeviceDataResult">
+		<wsdl:part name="AckRequest" element="base:AckRequest"/>
+	</wsdl:message>
+	<wsdl:message name="exportODSPMeteringDeviceDataResult">
 		<wsdl:part name="AckRequest" element="base:AckRequest"/>
 	</wsdl:message>
 	<wsdl:message name="importContractResult">
@@ -267,6 +273,12 @@
 			<wsdl:documentation>Получить перечень ПУ</wsdl:documentation>
 			<wsdl:input message="tns:exportMeteringDeviceDataRequest"/>
 			<wsdl:output message="tns:exportMeteringDeviceDataResult"/>
+			<wsdl:fault name="InvalidRequest" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="exportODSPMeteringDeviceData">
+			<wsdl:documentation>Получить перечень ПУ по ЛС для ОДСП</wsdl:documentation>
+			<wsdl:input message="tns:exportODSPMeteringDeviceDataRequest"/>
+			<wsdl:output message="tns:exportODSPMeteringDeviceDataResult"/>
 			<wsdl:fault name="InvalidRequest" message="tns:Fault"/>
 		</wsdl:operation>
 		<wsdl:operation name="getState">
@@ -509,6 +521,20 @@
 		</wsdl:operation>
 		<wsdl:operation name="exportMeteringDeviceData">
 			<soap:operation soapAction="urn:exportMeteringDeviceData"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:RequestHeader" part="Header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+				<soap:header message="tns:ResultHeader" part="Header" use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="InvalidRequest">
+				<soap:fault name="InvalidRequest" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="exportODSPMeteringDeviceData">
+			<soap:operation soapAction="urn:exportODSPMeteringDeviceData"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 				<soap:header message="tns:RequestHeader" part="Header" use="literal"/>

@@ -514,7 +514,7 @@
 								</xs:annotation>
 								<xs:element name="HSType" type="base:GUIDType">
 									<xs:annotation>
-										<xs:documentation>Вид ЖУ (справочник "Классификатор видов работ (услуг)")</xs:documentation>
+										<xs:documentation>Вид ЖУ (справочник "Вид жилищной услуги")</xs:documentation>
 									</xs:annotation>
 								</xs:element>
 								<xs:element name="MSType" type="base:GUIDType">

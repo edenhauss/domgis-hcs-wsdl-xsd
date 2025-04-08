@@ -1,4 +1,34 @@
 ===========================================================
+Изменения в форматах данных от версии 14.8.0.2 до версии 15.3.0.1
+===========================================================
+- NEWHCS-21307
+hcs-debts-types.xsd
+
+1. Для операций экспорта (exportDebtResult), импорта (importDebtRequest) добавлена поддерживаемая версия 15.3.0.0, в которой:
+1.1. Добавлен новый элемент JudicalActDatePronouncing (Дата судебного акта (вынесения)) в запросы importDebtRequest (Запрос на импорт сведений о задолженностях за ЖКУ), exportDebtResult (Результат экспорта сведений о задолженности за ЖКУ) структуру JudicalAct (Сведения о судебном акте)
+1.2. Добавлен новый элемент JudicalActDatePronouncing (Дата судебного акта (вынесения)) в запрос getStateResult (Возврат статуса отправленного сообщения) в структуру Debt (Сведения о задолженности за ЖКУ)
+
+- NEWHCS-21527
+hcs-debt-requests-types.xsd
+1. Для операций экспорта (exportDRsRequest) добавлена поддерживаемая версия 15.3.0.0, в которой:
+1.1. Добавлен новый элемент JudicalActDatePronouncing (Дата судебного акта (вынесения)) в запрос exportDRsRequest
+
+- NEWHCS-20729
+(будут доступны только с версии 15.5.0.1)
+hcs-capital-repair-types.xsd
+1. Для операций импорта (importAccountRegionalOperatorRequest, importAccountSpecialRequest, importDecisionsFormingFundRequest) изменена поддерживаемая версия на 15.5.0.1, в которой:
+1.1. Добавлен необязательный элемент "Номер корреспондентского счета" 
+2. Для результата экспорта (exportAccountRequest и exportDecisionsFormingFundRequest) добавлена поддерживаемая версия 15.5.0.1, в которой:
+2.1. Добавлен необязательный элемент "Номер корреспондентского счета" 
+
+- NEWHCS-22140  
+(будут доступны только с версии 15.4.0.1)
+hcs-house-management-types.xsd
+1. Для операции импорта (importVotingProtocolRequest, importVotingMessageRequest ), экспорта (exportVotingProtocolRequest) изменена поддерживаемая версия на 15.4.0.1, в которой:
+1.1. В поля с Датой начала приема решений (StartMakingDecisionDate) и Датой окончания приема решений (EndMakingDecisionDate) для импорта и экспорта протоколов и сообщений добавлено время для голосований "Заочное (опросным путем)" и "Очно-заочное" (AVoting и MeetingAVoting), поля не обязательны
+2. Для операции импорта (importVotingMessageRequest) поле Дата составления сообщения (MessageDate) не обязательно 
+
+===========================================================
 Изменения в форматах данных от версии 14.8.0.1 до версии 14.8.0.2
 ===========================================================
 - NEWHCS-20666
@@ -2413,3 +2443,72 @@ HCSANALYST-5513
 HCS-76095
 <!--hcs-services-types-->
 Добавлен тип данных MonthlyWorkCountType (количество работ/услуг за месяц) - неотрицательное целое число до 3 знаков. Используется для количества в типе данных CompletedWorkType.
+
+NEWHCS-20044
+<!--hcs-housemanagement-types-->
+importVotingMessageRequest/tns:VotingMessage/tns:MessageDate - сделан необязательным, изменен комментарий.
+
+NEWHCS-21510
+<!--hcs-housemanagement-types-->
+1. importVotingProtocolRequest изменения для параметров:
+	1.1 tns:Protocol/tns:AVoting/tns:AVotingStartDate:
+		1.1.1 Изменен тип на xs:dateTime
+		1.1.2 В аннотации удалена информация об обязательности
+		1.1.3 Переименован в tns:StartMakingDecisionDate
+	1.2 tns:Protocol/tns:AVoting/tns:AVotingDate:
+		1.2.1 Изменен тип на xs:dateTime
+		1.2.2 Поле необязательное
+		1.2.3 Переименован в tns:EndMakingDecisionDate
+	1.3 tns:Protocol/tns:MeetingAVoting/tns:AVotingStartDate:
+		1.3.1 Изменен тип на xs:dateTime
+		1.3.2 В аннотации удалена информация об обязательности
+		1.3.3 Переименован в tns:StartMakingDecisionDate
+	1.4 tns:Protocol/tns:MeetingAVoting/tns:AVotingDate:
+		1.4.1 Изменен тип на xs:dateTime
+		1.4.2 Поле необязательное
+		1.4.3 Переименован в tns:EndMakingDecisionDate
+	1.5 Значение поддерживаемой версии base:version изменено на 15.3.0.1
+2. exportVotingProtocolRequest Перечень поддерживаемых версий заменен на фиксированное значение 15.3.0.1
+3. exportVotingProtocolResultType изменения параметров:
+	3.1 tns:AVoting/tns:AVotingStartDate:
+		3.1.1 Изменен тип на xs:dateTime
+		3.1.2 Переименован в tns:StartMakingDecisionDate
+	3.2 tns:AVoting/tns:AVotingDate:
+		3.2.1 Изменен тип на xs:dateTime
+		3.2.2 Поле необязательное
+		3.2.3 Переименован в tns:EndMakingDecisionDate
+	3.3 tns:MeetingAVoting/tns:AVotingStartDate:
+		3.3.1 Изменен тип на xs:dateTime
+		3.3.2 Переименован в tns:StartMakingDecisionDate
+	3.4 tns:MeetingAVoting/tns:AVotingDate:
+		3.4.1 Изменен тип на xs:dateTime
+		3.4.2 Поле необязательное
+		3.4.3 Переименован в tns:EndMakingDecisionDate
+4. importVotingMessageRequest изменения параметров:
+	4.1 tns:AVoting/tns:AVotingStartDate
+		4.1.1 Изменен тип на xs:dateTime
+		4.1.2 Переименован в tns:StartMakingDecisionDate
+	4.2 tns:AVoting/tns:AVotingEndDate
+		4.2.1 Изменен тип на xs:dateTime
+		4.2.2 Переименован в tns:EndMakingDecisionDate
+	4.3 tns:MeetingAVoting/tns:AVotingStartDate
+		4.3.1 Изменен тип на xs:dateTime
+		4.3.2 Переименован в tns:StartMakingDecisionDate
+	4.4 tns:MeetingAVoting/tns:AVotingEndDate
+		4.4.1 Изменен тип на xs:dateTime
+		4.4.2 Переименован в tns:EndMakingDecisionDate
+	4.5 Значение поддерживаемой версии base:version изменено на 15.3.0.1
+5. exportVotingMessageRequest Значение поддерживаемой версии base:version изменено на 15.3.0.1
+6. exportVotingMessageResultType изменения параметров:
+	6.1 tns:AVoting/tns:AVotingStartDate
+		6.1.1 Изменен тип на xs:dateTime
+		6.1.2 Переименован в tns:StartMakingDecisionDate
+	6.2 tns:AVoting/tns:AVotingEndDate
+		6.2.1 Изменен тип на xs:dateTime
+		6.2.2 Переименован в tns:EndMakingDecisionDate
+	6.3 tns:MeetingAVoting/tns:AVotingStartDate
+		6.3.1 Изменен тип на xs:dateTime
+		6.3.2 Переименован в tns:StartMakingDecisionDate
+	6.4 tns:MeetingAVoting/tns:AVotingEndDate
+		6.4.1 Изменен тип на xs:dateTime
+		6.4.2 Переименован в tns:EndMakingDecisionDate

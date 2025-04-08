@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:tns="http://dom.gosuslugi.ru/schema/integration/drs/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:base="http://dom.gosuslugi.ru/schema/integration/base/" xmlns:nsi-base="http://dom.gosuslugi.ru/schema/integration/nsi-base/" targetNamespace="http://dom.gosuslugi.ru/schema/integration/drs/" elementFormDefault="qualified" attributeFormDefault="unqualified" version="14.0.0.0">
+<xs:schema xmlns:tns="http://dom.gosuslugi.ru/schema/integration/drs/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:base="http://dom.gosuslugi.ru/schema/integration/base/" xmlns:nsi-base="http://dom.gosuslugi.ru/schema/integration/nsi-base/" targetNamespace="http://dom.gosuslugi.ru/schema/integration/drs/" elementFormDefault="qualified" attributeFormDefault="unqualified" version="15.3.0.0">
 	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/base/" schemaLocation="../lib/hcs-base.xsd"/>
 	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/nsi-base/" schemaLocation="../lib/hcs-nsi-base.xsd"/>
 	<!--ОПЕРАЦИИ ДЛЯ ОРГАНИЗАЦИЙ, РАЗМЕЩАЮЩИХ ЗАПРОСЫ О НАЛИЧИИ ЗАДОЛЖЕННОСТИ ЗА ЖКУ-->
 	<!--Загрузка в ГИС ЖКХ запросов о наличии задолженности за ЖКУ-->
 	<xs:element name="importDRsRequest">
 		<xs:annotation>
-			<xs:documentation>Импорт в ГИС ЖКХ запросов о наличии задолженности за ЖКУ. Доступны версии 13.1.10.1 и 14.0.0.0</xs:documentation>
+			<xs:documentation>Импорт в ГИС ЖКХ запросов о наличии задолженности за ЖКУ. Доступны версии 13.1.10.1, 14.0.0.0, 15.3.0.0</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -74,7 +74,7 @@
 	<!--Выгрузка из ГИС ЖКХ запросов о наличии задолженности за ЖКУ-->
 	<xs:element name="exportDRsRequest">
 		<xs:annotation>
-			<xs:documentation>Экспорт из ГИС ЖКХ запросов о наличии задолженности за ЖКУ. Доступны версии 13.1.10.1 и 14.0.0.0</xs:documentation>
+			<xs:documentation>Экспорт из ГИС ЖКХ запросов о наличии задолженности за ЖКУ. Доступны версии 13.1.10.1, 14.0.0.0 и 15.3.0.0</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -178,7 +178,7 @@
 	</xs:element>
 	<xs:element name="exportDRsResult">
 		<xs:annotation>
-			<xs:documentation>Результат экспорта из ГИС ЖКХ запросов о наличии задолженности за ЖКУ. Доступны версии 13.1.10.1 и 14.0.0.0</xs:documentation>
+			<xs:documentation>Результат экспорта из ГИС ЖКХ запросов о наличии задолженности за ЖКУ.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -252,7 +252,7 @@
 	<!--Выгрузка из ГИС ЖКХ подзапросов о наличии задолженности за ЖКУ, адресованных организации, и ответов организации на них-->
 	<xs:element name="exportDSRsRequest">
 		<xs:annotation>
-			<xs:documentation>Экспорт из ГИС ЖКХ подзапросов о наличии задолженности за ЖКУ, сформированных ГИС ЖКХ. Доступны версии 13.1.10.1 и 14.0.0.0</xs:documentation>
+			<xs:documentation>Экспорт из ГИС ЖКХ подзапросов о наличии задолженности за ЖКУ, сформированных ГИС ЖКХ. Доступны версии 13.1.10.1, 14.0.0.0 и 15.3.0.0</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -340,7 +340,7 @@
 	</xs:element>
 	<xs:element name="exportDSRsResult">
 		<xs:annotation>
-			<xs:documentation>Результат экспорта из ГИС ЖКХ подзапросов о наличии задолженности за ЖКУ, сформированных ГИС ЖКХ. Доступны версии 13.1.10.1 и 14.0.0.0</xs:documentation>
+			<xs:documentation>Результат экспорта из ГИС ЖКХ подзапросов о наличии задолженности за ЖКУ, сформированных ГИС ЖКХ. Доступны версии 13.1.10.1, 14.0.0.0 и 15.3.0.0</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -1113,7 +1113,7 @@
 	</xs:complexType>
 	<xs:complexType name="ActType">
 		<xs:annotation>
-			<xs:documentation>блок судебного акта</xs:documentation>
+			<xs:documentation>блок судебного акта Доступные версии: 14.0.0.0 и 15.3.0.0</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="number">
@@ -1129,6 +1129,11 @@
 			<xs:element name="date" type="xs:date">
 				<xs:annotation>
 					<xs:documentation>Дата вступления в силу судебного акта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="judicalActDatePronouncing" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дата судебного акта (вынесения) Необязательный атрибут. Заполняется, начиная с версии 15.3.0.0, если значение не пустое</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
