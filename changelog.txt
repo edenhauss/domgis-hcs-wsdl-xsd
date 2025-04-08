@@ -1,4 +1,26 @@
 ===========================================================
+Изменения в форматах данных от версии 15.3.0.1 до версии 15.4.0.1
+===========================================================
+- NEWHCS-22140  
+hcs-house-management-types.xsd
+1. Для операции импорта (importVotingProtocolRequest, importVotingMessageRequest ), экспорта (exportVotingProtocolRequest) изменена поддерживаемая версия на 15.4.0.1, в которой:
+1.1. В поля с Датой начала приема решений (StartMakingDecisionDate) и Датой окончания приема решений (EndMakingDecisionDate) для импорта и экспорта протоколов и сообщений добавлено время для голосований "Заочное (опросным путем)" и "Очно-заочное" (AVoting и MeetingAVoting)
+1.2. Поля с Датой начала приема решений (StartMakingDecisionDate) и Датой окончания приема решений (EndMakingDecisionDate) стали необязательны для импорта и экспорта протоколов (importVotingProtocolRequest, exportVotingProtocolRequest)
+2. Для операции импорта (importVotingMessageRequest) поле Дата составления сообщения (MessageDate) не обязательно 
+
+- NEWHCS-21447 
+hcs-house-management-types.xsd
+1. Добавлена операция экспорта ПУ по лицевому счету для Оператора ДСП (exportODSPMeteringDeviceDataRequest)
+2. Добавлен элемент ПУ для оператора дистанционного снятия показаний (exportODSPMeteringDeviceDataResult) в запрос getStateResult (Возврат статуса отправленного сообщения)
+hcs-house-management-service-async.wsdl
+3. Добавлена операция экспорта ПУ по лицевому счету для Оператора ДСП (exportODSPMeteringDeviceData)
+
+NEWHCS-22674
+hcs-licenses-types 
+1. Для операций экспорта (exportDisqualifiedPersonRequest и exportDisqualifiedPersonResult) добавлена  поддерживаемая версия 15.4.0.1, в которой 
+1.1. Добавлено поле ErulNumber (Номер по ЕРУЛ) и TempNumber (Временный номер) 
+
+===========================================================
 Изменения в форматах данных от версии 14.8.0.2 до версии 15.3.0.1
 ===========================================================
 - NEWHCS-21307
@@ -25,7 +47,8 @@ hcs-capital-repair-types.xsd
 (будут доступны только с версии 15.4.0.1)
 hcs-house-management-types.xsd
 1. Для операции импорта (importVotingProtocolRequest, importVotingMessageRequest ), экспорта (exportVotingProtocolRequest) изменена поддерживаемая версия на 15.4.0.1, в которой:
-1.1. В поля с Датой начала приема решений (StartMakingDecisionDate) и Датой окончания приема решений (EndMakingDecisionDate) для импорта и экспорта протоколов и сообщений добавлено время для голосований "Заочное (опросным путем)" и "Очно-заочное" (AVoting и MeetingAVoting), поля не обязательны
+1.1. В поля с Датой начала приема решений (StartMakingDecisionDate) и Датой окончания приема решений (EndMakingDecisionDate) для импорта и экспорта протоколов и сообщений добавлено время для голосований "Заочное (опросным путем)" и "Очно-заочное" (AVoting и MeetingAVoting)
+1.2. Поля с Датой начала приема решений (StartMakingDecisionDate) и Датой окончания приема решений (EndMakingDecisionDate) стали необязательны для импорта и экспорта протоколов (importVotingProtocolRequest, exportVotingProtocolRequest)
 2. Для операции импорта (importVotingMessageRequest) поле Дата составления сообщения (MessageDate) не обязательно 
 
 ===========================================================
@@ -2444,9 +2467,6 @@ HCS-76095
 <!--hcs-services-types-->
 Добавлен тип данных MonthlyWorkCountType (количество работ/услуг за месяц) - неотрицательное целое число до 3 знаков. Используется для количества в типе данных CompletedWorkType.
 
-NEWHCS-20044
-<!--hcs-housemanagement-types-->
-importVotingMessageRequest/tns:VotingMessage/tns:MessageDate - сделан необязательным, изменен комментарий.
 
 NEWHCS-21510
 <!--hcs-housemanagement-types-->
@@ -2512,3 +2532,14 @@ NEWHCS-21510
 	6.4 tns:MeetingAVoting/tns:AVotingEndDate
 		6.4.1 Изменен тип на xs:dateTime
 		6.4.2 Переименован в tns:EndMakingDecisionDate
+
+NEWHCS-22674
+<!--hcs-licenses-types-->
+1. exportDisqualifiedPersonRequest изменения параметров: 
+	1.1 Добавлены элементы Номер по ЕРУЛ tns:DisqualifiedPerson/tns:ErulNumber и Временный номер лицензии tns:DisqualifiedPerson/tns:TempNumber
+	1.2 Уточнено описание tns:DisqualifiedPerson/tns:LicenseNumber
+	1.3 Удалено фиксированное значение версии, добавлено уточнение, что возможные версии 10.0.1.1, 15.4.0.1
+2. exportDisqualifiedPersonResult изменения параметров:
+	2.1 Добавлены элементы Номер по ЕРУЛ tns:exportDisqualifiedPersonResults/tns:ErulNumber и Временный номер лицензии tns:exportDisqualifiedPersonResults/tns:TempNumber
+	2.2 Уточнено описание tns:exportDisqualifiedPersonResults/tns:LicenseNumber
+	2.3 Удалено фиксированное значение версии
