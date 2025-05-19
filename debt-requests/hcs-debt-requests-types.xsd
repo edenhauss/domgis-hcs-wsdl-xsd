@@ -6,7 +6,7 @@
 	<!--Загрузка в ГИС ЖКХ запросов о наличии задолженности за ЖКУ-->
 	<xs:element name="importDRsRequest">
 		<xs:annotation>
-			<xs:documentation>Импорт в ГИС ЖКХ запросов о наличии задолженности за ЖКУ. Доступны версии 13.1.10.1, 14.0.0.0, 15.3.0.0</xs:documentation>
+			<xs:documentation>Импорт в ГИС ЖКХ запросов о наличии задолженности за ЖКУ. Доступны версии 13.1.10.1, 14.0.0.0,</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>

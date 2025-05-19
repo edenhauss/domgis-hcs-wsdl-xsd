@@ -1,4 +1,23 @@
 ===========================================================
+Изменения в форматах данных от версии 15.4.0.1 до версии 15.5.0.1
+===========================================================
+- NEWHCS-20729, NEWHCS-22298
+hcs-capital-repair-types.xsd
+1. Для операций импорта (importAccountRegionalOperatorRequest, importAccountSpecialRequest, importDecisionsFormingFundRequest) изменена поддерживаемая версия на 15.5.0.1, в которой:
+1.1. Добавлен необязательный элемент "Номер корреспондентского счета" 
+2. Для результата экспорта (exportAccountRequest и exportDecisionsFormingFundRequest) добавлена поддерживаемая версия 15.5.0.1, в которой:
+2.1. Добавлен необязательный элемент "Номер корреспондентского счета" 
+
+- NEWHCS-22321 
+(будут доступны только с версии 15.7.0.1)
+hcs-debt-requests-types.xsd
+1.Для операций импорта (importDebtRequest) удалена поддерживаемая версия 13.3.1.0  
+
+- HCS-96246
+hcs-house-management-types.xsd
+1. Добавление аннотации для схемы: Добавлен статус PostedFromAnotherSystem в StatusProtocol и StatusVersionProtocol для экспорта протоколов ОСС (exportVotingProtocolRequest и exportVotingProtocolResultType)
+
+===========================================================
 Изменения в форматах данных от версии 15.3.0.1 до версии 15.4.0.1
 ===========================================================
 - NEWHCS-22140  
