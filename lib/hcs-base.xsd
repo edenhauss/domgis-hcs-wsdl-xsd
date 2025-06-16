@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2018 rel. 2 sp1 (x64) (http://www.altova.com) by rzf (fdbs) -->
 <xs:schema xmlns:tns="http://dom.gosuslugi.ru/schema/integration/base/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://dom.gosuslugi.ru/schema/integration/base/" elementFormDefault="qualified" attributeFormDefault="unqualified" version="13.1.10.2">
 	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd"/>
 	<xs:simpleType name="String2000Type">
@@ -430,7 +431,8 @@
 	</xs:element>
 	<xs:element name="ErrorMessage" type="tns:ErrorMessageType">
 		<xs:annotation>
-			<xs:documentation>Описание ошибок контролей или бизнес-процесса</xs:documentation>
+			<xs:documentation>Описание ошибок контролей или бизнес-процесса. Элемент не заполянется. Оставлен для совместимости 
+</xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:complexType name="ErrorMessageType">

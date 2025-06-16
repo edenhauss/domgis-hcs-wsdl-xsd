@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by TeaM DJiNN (TeaM DJiNN) -->
-<xs:schema xmlns:tns="http://dom.gosuslugi.ru/schema/integration/house-management/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:base="http://dom.gosuslugi.ru/schema/integration/base/" xmlns:premises-base="http://dom.gosuslugi.ru/schema/integration/premises-base/" xmlns:bills-base="http://dom.gosuslugi.ru/schema/integration/bills-base/" xmlns:account-base="http://dom.gosuslugi.ru/schema/integration/account-base/" xmlns:nsi-base="http://dom.gosuslugi.ru/schema/integration/nsi-base/" xmlns:organizations-base="http://dom.gosuslugi.ru/schema/integration/organizations-base/" xmlns:organizations-registry-base="http://dom.gosuslugi.ru/schema/integration/organizations-registry-base/" xmlns:metering-device-base="http://dom.gosuslugi.ru/schema/integration/metering-device-base/" xmlns:individual-registry-base="http://dom.gosuslugi.ru/schema/integration/individual-registry-base/" targetNamespace="http://dom.gosuslugi.ru/schema/integration/house-management/" elementFormDefault="qualified" attributeFormDefault="unqualified" version="15.4.0.1">
+<!-- edited with XMLSpy v2018 rel. 2 sp1 (x64) (http://www.altova.com) by rzf (fdbs) -->
+<xs:schema xmlns:tns="http://dom.gosuslugi.ru/schema/integration/house-management/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:base="http://dom.gosuslugi.ru/schema/integration/base/" xmlns:premises-base="http://dom.gosuslugi.ru/schema/integration/premises-base/" xmlns:bills-base="http://dom.gosuslugi.ru/schema/integration/bills-base/" xmlns:account-base="http://dom.gosuslugi.ru/schema/integration/account-base/" xmlns:nsi-base="http://dom.gosuslugi.ru/schema/integration/nsi-base/" xmlns:organizations-base="http://dom.gosuslugi.ru/schema/integration/organizations-base/" xmlns:organizations-registry-base="http://dom.gosuslugi.ru/schema/integration/organizations-registry-base/" xmlns:metering-device-base="http://dom.gosuslugi.ru/schema/integration/metering-device-base/" xmlns:individual-registry-base="http://dom.gosuslugi.ru/schema/integration/individual-registry-base/" targetNamespace="http://dom.gosuslugi.ru/schema/integration/house-management/" elementFormDefault="qualified" attributeFormDefault="unqualified" version="15.6.0.1">
 	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/base/" schemaLocation="../lib/hcs-base.xsd"/>
 	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/premises-base/" schemaLocation="../lib/hcs-premises-base.xsd"/>
 	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/bills-base/" schemaLocation="../lib/hcs-bills-base.xsd"/>
@@ -429,7 +429,7 @@
 	</xs:element>
 	<xs:element name="importHouseOMSRequest">
 		<xs:annotation>
-			<xs:documentation>Импорт данных дома. В ответ на запрос формируется статус обработки данных многоквартирного дома. ImportResult содержит результат обработки данных дома (В GUID содержится FIASHouseGuid входных данных, UniqueNumber содержит Уникальный номер дома), помещений (UniqueNumber содержит Уникальный номер помещения), комнат (UniqueNumber содержит Уникальный номер комнаты). Доступны версии 11.5.0.2, 13.2.3.2</xs:documentation>
+			<xs:documentation>Импорт данных дома. В ответ на запрос формируется статус обработки данных многоквартирного дома. ImportResult содержит результат обработки данных дома (В GUID содержится FIASHouseGuid входных данных, UniqueNumber содержит Уникальный номер дома), помещений (UniqueNumber содержит Уникальный номер помещения), комнат (UniqueNumber содержит Уникальный номер комнаты). Доступны версии 11.5.0.2, 13.2.3.2, 15.6.0.1</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -453,13 +453,19 @@
 															<xs:sequence>
 																<xs:element name="HouseManagementType" type="nsi-base:nsiRef" minOccurs="0">
 																	<xs:annotation>
-																		<xs:documentation>Cпособ управления домом (НСИ 25). Разрешено предавать параметр только при отсутствии информации об управлении МКД (отсутствует запись в РИСУ и/или не размещён договор управления/устав):
-- Не выбран
-- Непосредственное управление.
-</xs:documentation>
+																		<xs:documentation>Cпособ управления домом (НСИ 25). Разрешено передавать параметр только при отсутствии информации об управлении МКД (отсутствует запись в РИСУ и/или не размещён договор управления/устав):
+- Не выбран;
+- Непосредственное управление;
+- Выбран, но не реализован.
+В иных случаях значение элемента игнорируется.</xs:documentation>
 																	</xs:annotation>
 																</xs:element>
 																<xs:element ref="base:TransportGUID"/>
+																<xs:element name="ManagementPeriodFrom" type="xs:date" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Дата начала способа управления. Заполняется только для версии 15.6.0.1 и выше</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
 															</xs:sequence>
 														</xs:extension>
 													</xs:complexContent>
@@ -477,9 +483,15 @@
 																<xs:element name="HouseManagementType" type="nsi-base:nsiRef" minOccurs="0">
 																	<xs:annotation>
 																		<xs:documentation>Cпособ управления домом (НСИ 25). Разрешено предавать параметр только при отсутствии информации об управлении МКД (отсутствует запись в РИСУ и/или не размещён договор управления/устав):
-- Не выбран
-- Непосредственное управление.
-</xs:documentation>
+- Не выбран;
+- Непосредственное управление;
+- Выбран, но не реализован.
+В иных случаях значение элемента игнорируется.</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+																<xs:element name="ManagementPeriodFrom" type="xs:date" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Дата начала способа управления. Заполняется только для версии 15.6.0.1 и выше</xs:documentation>
 																	</xs:annotation>
 																</xs:element>
 															</xs:sequence>
@@ -871,7 +883,7 @@
 	</xs:element>
 	<xs:element name="importHouseESPRequest">
 		<xs:annotation>
-			<xs:documentation>Импорт данных дома. В ответ на запрос формируется статус обработки данных многоквартирного дома. ImportResult содержит результат обработки данных дома (В GUID содержится FIASHouseGuid входных данных, UniqueNumber содержит Уникальный номер дома), помещений (UniqueNumber содержит Уникальный номер помещения), комнат (UniqueNumber содержит Уникальный номер комнаты). Доступны версии 11.6.0.2, 13.2.3.2</xs:documentation>
+			<xs:documentation>Импорт данных дома. В ответ на запрос формируется статус обработки данных многоквартирного дома. ImportResult содержит результат обработки данных дома (В GUID содержится FIASHouseGuid входных данных, UniqueNumber содержит Уникальный номер дома), помещений (UniqueNumber содержит Уникальный номер помещения), комнат (UniqueNumber содержит Уникальный номер комнаты). Доступны версии 11.6.0.2, 13.2.3.2, 15.6.0.1</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -897,8 +909,15 @@
 																<xs:annotation>
 																	<xs:documentation>Разрешено предавать параметр только при отсутствии информации об управлении МКД (отсутствует запись в РИСУ и/или не размещён договор управления/устав):
 - Не выбран
-- Непосредственное управление.
+- Непосредственное управление
+- Выбран, но не реализован.
 </xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ManagementPeriodFrom" type="xs:date" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation>Дата начала способа управления
+																	</xs:documentation>
 																</xs:annotation>
 															</xs:element>
 														</xs:sequence>
@@ -919,8 +938,15 @@
 																<xs:annotation>
 																	<xs:documentation>Разрешено предавать параметр только при отсутствии информации об управлении МКД (отсутствует запись в РИСУ и/или не размещён договор управления/устав):
 - Не выбран
-- Непосредственное управление.
+- Непосредственное управление
+- Выбран, но не реализован.
 </xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ManagementPeriodFrom" type="xs:date" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation>Дата начала способа управления
+																	</xs:documentation>
 																</xs:annotation>
 															</xs:element>
 														</xs:sequence>
@@ -1142,7 +1168,7 @@
 		<xs:annotation>
 			<xs:documentation>Запрос на экспорт информации о доме.
 
-Доступны версии: 11.1.0.1, 12.2.0.1 и 13.2.3.2</xs:documentation>
+Доступны версии: 11.1.0.1, 12.2.0.1, 13.2.3.2, 15.6.0.1</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -1172,6 +1198,11 @@
 			<xs:element name="ModificationDate" type="xs:dateTime">
 				<xs:annotation>
 					<xs:documentation>Дата модификации данных дома</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HouseGUID" type="base:GUIDType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Идентификатор дома в реестре объектов жилищного фонда. Элемент заполняется для версии 15.6.0.1</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:choice>
@@ -4971,7 +5002,7 @@ Locked-Заблокирован</xs:documentation>
 									<xs:sequence>
 										<xs:element name="ServiceType">
 											<xs:annotation>
-												<xs:documentation>Предмет договора 
+												<xs:documentation>Предмет договора
 Виды КУ. Ссылка на НСИ "Вид коммунальной услуги" (реестровый номер 3) </xs:documentation>
 											</xs:annotation>
 											<xs:complexType>
@@ -5503,7 +5534,7 @@ P(roprietor)-Исполнитель коммунальных услуг. Зап�
 														<xs:sequence>
 															<xs:element name="ServiceType">
 																<xs:annotation>
-																	<xs:documentation>Предмет договора 
+																	<xs:documentation>Предмет договора
 Виды КУ. Ссылка на НСИ "Вид коммунальной услуги" (реестровый номер 3) </xs:documentation>
 																</xs:annotation>
 																<xs:complexType>
@@ -6390,7 +6421,7 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 				<xs:annotation>
 					<xs:documentation>Порядок размещения информации о начислениях за коммунальные услуги ведется
 D - в разрезе договора.
-O - в разрезе объектов жилищного фонда. 
+O - в разрезе объектов жилищного фонда.
 Заполняется, если второй стороной договора является исполнитель коммунальных услуг</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
@@ -7624,7 +7655,7 @@ O - в разрезе объектов жилищного фонда. Запол
 				<xs:annotation>
 					<xs:documentation>Размещение информации о начислениях за коммунальные услуги осуществляет:
 R(SO)- РСО.
-P(roprietor)-Исполнитель коммунальных услуг. 
+P(roprietor)-Исполнитель коммунальных услуг.
 Заполняется, если порядок размещения информации о начислениях за коммунальные услуги ведется в разрезе договора</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
@@ -7907,7 +7938,7 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 				<xs:annotation>
 					<xs:documentation>Порядок размещения информации о начислениях за коммунальные услуги ведется
 D - в разрезе договора.
-O - в разрезе объектов жилищного фонда. 
+O - в разрезе объектов жилищного фонда.
 Заполняется, если второй стороной договора является исполнитель коммунальных услуг</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
