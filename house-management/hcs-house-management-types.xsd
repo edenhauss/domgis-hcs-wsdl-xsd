@@ -3934,7 +3934,7 @@ Archival-Архивный</xs:documentation>
 		<xs:annotation>
 			<xs:documentation>Экспорт ДУ/уставов.
 
-Доступные версии формата экспорта: 10.0.1.1, 13.0.0.1 и 13.1.2.1</xs:documentation>
+Доступные версии формата экспорта: 10.0.1.1, 13.0.0.1 и 13.1.2.1, 13.1.7.1 </xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -18715,7 +18715,6 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 							<xs:element name="PremiseGUID" type="base:GUIDType" minOccurs="0" maxOccurs="unbounded">
 								<xs:annotation>
 									<xs:documentation>Идентификатор помещения (тип = жилое помещение).
-Идентификатор помещения (тип = жилое помещение).
 Заполняется для импорта  версии 11.1.0.8 и экспорта версий 11.1.0.2 и 14.8.0.1</xs:documentation>
 								</xs:annotation>
 							</xs:element>
@@ -18737,7 +18736,7 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 									<xs:sequence>
 										<xs:element name="PremiseGUID" type="base:GUIDType">
 											<xs:annotation>
-												<xs:documentation>Идентификатор помещения (тип = жилое помещение) Идентификатор помещения (тип = жилое помещение).
+												<xs:documentation>Идентификатор помещения (тип = жилое помещение).
 Заполняется для экспорта версий 11.1.0.2 и 14.8.0.1</xs:documentation>
 											</xs:annotation>
 										</xs:element>
@@ -18768,7 +18767,6 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 							<xs:element name="PremiseGUID" type="base:GUIDType" minOccurs="0" maxOccurs="unbounded">
 								<xs:annotation>
 									<xs:documentation>Идентификатор помещения (тип = жилое помещение).
-Идентификатор помещения (тип = жилое помещение).
 Заполняется для импорта  версии 11.1.0.8 и экспорта версий 11.1.0.2 и 14.8.0.1</xs:documentation>
 								</xs:annotation>
 							</xs:element>
@@ -18790,7 +18788,7 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 									<xs:sequence>
 										<xs:element name="PremiseGUID" type="base:GUIDType">
 											<xs:annotation>
-												<xs:documentation>Идентификатор помещения (тип = жилое помещение) Идентификатор помещения (тип = жилое помещение).
+												<xs:documentation>Идентификатор помещения (тип = жилое помещение).
 Заполняется для  экспорта версий 11.1.0.2 и 14.8.0.1</xs:documentation>
 											</xs:annotation>
 										</xs:element>
@@ -18903,7 +18901,6 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 							<xs:element name="PremiseGUID" type="base:GUIDType" minOccurs="0" maxOccurs="unbounded">
 								<xs:annotation>
 									<xs:documentation>Идентификатор помещения (тип = жилое помещение).
-Идентификатор помещения (тип = жилое помещение).
 Заполняется для импорта  версии 11.1.0.8 и экспорта версий 11.1.0.2 и 14.8.0.1</xs:documentation>
 								</xs:annotation>
 							</xs:element>
@@ -18925,7 +18922,7 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 									<xs:sequence>
 										<xs:element name="PremiseGUID" type="base:GUIDType">
 											<xs:annotation>
-												<xs:documentation>Идентификатор помещения (тип = жилое помещение) Идентификатор помещения (тип = жилое помещение).
+												<xs:documentation>Идентификатор помещения (тип = жилое помещение).
 Заполняется для экспорта версий 11.1.0.2 и 14.8.0.1</xs:documentation>
 											</xs:annotation>
 										</xs:element>
