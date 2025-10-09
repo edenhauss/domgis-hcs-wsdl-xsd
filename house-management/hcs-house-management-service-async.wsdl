@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dom.gosuslugi.ru/schema/integration/house-management-service-async/" xmlns:hm="http://dom.gosuslugi.ru/schema/integration/house-management/" xmlns:base="http://dom.gosuslugi.ru/schema/integration/base/" xmlns:ns="http://www.w3.org/2000/09/xmldsig#" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://dom.gosuslugi.ru/schema/integration/account-base/" xmlns:ns2="http://dom.gosuslugi.ru/schema/integration/individual-registry-base/" xmlns:ns3="http://dom.gosuslugi.ru/schema/integration/metering-device-base/" xmlns:ns4="http://dom.gosuslugi.ru/schema/integration/nsi-base/" xmlns:ns5="http://dom.gosuslugi.ru/schema/integration/organizations-registry-base/" xmlns:ns6="http://dom.gosuslugi.ru/schema/integration/bills-base/" xmlns:ns7="http://dom.gosuslugi.ru/schema/integration/organizations-base/" xmlns:ns8="http://dom.gosuslugi.ru/schema/integration/premises-base/" targetNamespace="http://dom.gosuslugi.ru/schema/integration/house-management-service-async/">
 	<wsdl:types>
-		<xs:schema version="13.1.9.2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+		<xs:schema version="15.10.0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 			<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/house-management/" schemaLocation="hcs-house-management-types.xsd"/>
 			<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/base/" schemaLocation="../lib/hcs-base.xsd"/>
 		</xs:schema>
@@ -262,6 +262,18 @@
 	<wsdl:message name="exportOwnerRefusalResult">
 		<wsdl:part name="AckRequest" element="base:AckRequest"/>
 	</wsdl:message>
+	<wsdl:message name="importAbsenceDeviceInfoRequest">
+		<wsdl:part name="importAbsenceDeviceInfoRequest" element="hm:importAbsenceDeviceInfoRequest"/>
+	</wsdl:message>
+	<wsdl:message name="importAbsenceDeviceInfoResult">
+		<wsdl:part name="AckRequest" element="base:AckRequest"/>
+	</wsdl:message>
+	<wsdl:message name="exportAbsenceDeviceInfoRequest">
+		<wsdl:part name="exportAbsenceDeviceInfoRequest" element="hm:exportAbsenceDeviceInfoRequest"/>
+	</wsdl:message>
+	<wsdl:message name="exportAbsenceDeviceInfoResult">
+		<wsdl:part name="AckRequest" element="base:AckRequest"/>
+	</wsdl:message>
 	<wsdl:portType name="HouseManagementPortsTypeAsync">
 		<wsdl:operation name="importMeteringDeviceData">
 			<wsdl:documentation>Передать данные ПУ</wsdl:documentation>
@@ -500,6 +512,18 @@
 			<wsdl:documentation>Экспорт письменных отказов собственников</wsdl:documentation>
 			<wsdl:input message="tns:exportOwnerRefusalRequest"/>
 			<wsdl:output message="tns:exportOwnerRefusalResult"/>
+			<wsdl:fault name="InvalidRequest" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="importAbsenceDeviceInfo">
+			<wsdl:documentation>Cоздание, редактирование, аннулирование сведений об отсутствии технической возможности установки приборов учета</wsdl:documentation>
+			<wsdl:input message="tns:importAbsenceDeviceInfoRequest"/>
+			<wsdl:output message="tns:importAbsenceDeviceInfoResult"/>
+			<wsdl:fault name="InvalidRequest" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="exportAbsenceDeviceInfo">
+			<wsdl:documentation>Экспорт сведений об отсутствии технической возможности установки ПУ</wsdl:documentation>
+			<wsdl:input message="tns:exportAbsenceDeviceInfoRequest"/>
+			<wsdl:output message="tns:exportAbsenceDeviceInfoResult"/>
 			<wsdl:fault name="InvalidRequest" message="tns:Fault"/>
 		</wsdl:operation>
 	</wsdl:portType>
@@ -1053,6 +1077,34 @@
 		</wsdl:operation>
 		<wsdl:operation name="exportOwnerRefusal">
 			<soap:operation soapAction="urn:exportOwnerRefusal"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:RequestHeader" part="Header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+				<soap:header message="tns:ResultHeader" part="Header" use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="InvalidRequest">
+				<soap:fault name="InvalidRequest" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="importAbsenceDeviceInfo">
+			<soap:operation soapAction="urn:importAbsenceDeviceInfo"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:RequestHeader" part="Header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+				<soap:header message="tns:ResultHeader" part="Header" use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="InvalidRequest">
+				<soap:fault name="InvalidRequest" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="exportAbsenceDeviceInfo">
+			<soap:operation soapAction="urn:exportAbsenceDeviceInfo"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 				<soap:header message="tns:RequestHeader" part="Header" use="literal"/>

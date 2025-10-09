@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:tns="http://dom.gosuslugi.ru/schema/integration/house-management/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:base="http://dom.gosuslugi.ru/schema/integration/base/" xmlns:premises-base="http://dom.gosuslugi.ru/schema/integration/premises-base/" xmlns:bills-base="http://dom.gosuslugi.ru/schema/integration/bills-base/" xmlns:account-base="http://dom.gosuslugi.ru/schema/integration/account-base/" xmlns:nsi-base="http://dom.gosuslugi.ru/schema/integration/nsi-base/" xmlns:organizations-base="http://dom.gosuslugi.ru/schema/integration/organizations-base/" xmlns:organizations-registry-base="http://dom.gosuslugi.ru/schema/integration/organizations-registry-base/" xmlns:metering-device-base="http://dom.gosuslugi.ru/schema/integration/metering-device-base/" xmlns:individual-registry-base="http://dom.gosuslugi.ru/schema/integration/individual-registry-base/" targetNamespace="http://dom.gosuslugi.ru/schema/integration/house-management/" elementFormDefault="qualified" attributeFormDefault="unqualified" version="15.6.0.1">
+<!-- edited with XMLSpy v2025 (x64) (https://www.altova.com) by  () -->
+<xs:schema xmlns:tns="http://dom.gosuslugi.ru/schema/integration/house-management/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:base="http://dom.gosuslugi.ru/schema/integration/base/" xmlns:premises-base="http://dom.gosuslugi.ru/schema/integration/premises-base/" xmlns:bills-base="http://dom.gosuslugi.ru/schema/integration/bills-base/" xmlns:account-base="http://dom.gosuslugi.ru/schema/integration/account-base/" xmlns:nsi-base="http://dom.gosuslugi.ru/schema/integration/nsi-base/" xmlns:organizations-base="http://dom.gosuslugi.ru/schema/integration/organizations-base/" xmlns:organizations-registry-base="http://dom.gosuslugi.ru/schema/integration/organizations-registry-base/" xmlns:metering-device-base="http://dom.gosuslugi.ru/schema/integration/metering-device-base/" xmlns:individual-registry-base="http://dom.gosuslugi.ru/schema/integration/individual-registry-base/" targetNamespace="http://dom.gosuslugi.ru/schema/integration/house-management/" elementFormDefault="qualified" attributeFormDefault="unqualified" version="15.10.0.0">
 	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/base/" schemaLocation="../lib/hcs-base.xsd"/>
 	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/premises-base/" schemaLocation="../lib/hcs-premises-base.xsd"/>
 	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/bills-base/" schemaLocation="../lib/hcs-bills-base.xsd"/>
@@ -428,7 +429,7 @@
 	</xs:element>
 	<xs:element name="importHouseOMSRequest">
 		<xs:annotation>
-			<xs:documentation>Импорт данных дома. В ответ на запрос формируется статус обработки данных многоквартирного дома. ImportResult содержит результат обработки данных дома (В GUID содержится FIASHouseGuid входных данных, UniqueNumber содержит Уникальный номер дома), помещений (UniqueNumber содержит Уникальный номер помещения), комнат (UniqueNumber содержит Уникальный номер комнаты). Доступны версии 11.5.0.2, 13.2.3.2, 15.6.0.1</xs:documentation>
+			<xs:documentation>Импорт данных дома. В ответ на запрос формируется статус обработки данных многоквартирного дома. ImportResult содержит результат обработки данных дома (В GUID содержится FIASHouseGuid входных данных, UniqueNumber содержит Уникальный номер дома), помещений (UniqueNumber содержит Уникальный номер помещения), комнат (UniqueNumber содержит Уникальный номер комнаты). Доступны версии 11.5.0.2, 13.2.3.2, 15.6.0.1, 15.10.0.0</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -882,7 +883,7 @@
 	</xs:element>
 	<xs:element name="importHouseESPRequest">
 		<xs:annotation>
-			<xs:documentation>Импорт данных дома. В ответ на запрос формируется статус обработки данных многоквартирного дома. ImportResult содержит результат обработки данных дома (В GUID содержится FIASHouseGuid входных данных, UniqueNumber содержит Уникальный номер дома), помещений (UniqueNumber содержит Уникальный номер помещения), комнат (UniqueNumber содержит Уникальный номер комнаты). Доступны версии 11.6.0.2, 13.2.3.2, 15.6.0.1</xs:documentation>
+			<xs:documentation>Импорт данных дома. В ответ на запрос формируется статус обработки данных многоквартирного дома. ImportResult содержит результат обработки данных дома (В GUID содержится FIASHouseGuid входных данных, UniqueNumber содержит Уникальный номер дома), помещений (UniqueNumber содержит Уникальный номер помещения), комнат (UniqueNumber содержит Уникальный номер комнаты). Доступны версии 11.6.0.2, 13.2.3.2, 15.6.0.1, 15.10.0.0</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -1167,7 +1168,7 @@
 		<xs:annotation>
 			<xs:documentation>Запрос на экспорт информации о доме.
 
-Доступны версии: 11.1.0.1, 12.2.0.1, 13.2.3.2, 15.6.0.1</xs:documentation>
+Доступны версии: 11.1.0.1, 12.2.0.1, 13.2.3.2, 15.6.0.1, 15.10.0.0</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -2945,6 +2946,197 @@ Archival-Архивный</xs:documentation>
 				</xs:element>
 			</xs:choice>
 		</xs:sequence>
+	</xs:complexType>
+	<!--Импорт сведений об отсутствии технической возможности установки приборов учета-->
+	<xs:element name="importAbsenceDeviceInfoRequest">
+		<xs:annotation>
+			<xs:documentation>Импорт сведений об отсутствии технической возможности установки приборов учета</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="base:BaseType">
+					<xs:sequence>
+						<xs:element name="AbsenceDeviceInfo" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:sequence>
+										<xs:element ref="base:TransportGUID"/>
+									</xs:sequence>
+									<xs:choice>
+										<xs:element name="PlacingAbsenceDeviceInfo">
+											<xs:annotation>
+												<xs:documentation>Размещение сведений</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ActCreateDate" type="xs:date">
+														<xs:annotation>
+															<xs:documentation>Дата составления акта</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="DeviceTypeBase" type="nsi-base:nsiRef">
+														<xs:annotation>
+															<xs:documentation>Ссылка на НСИ "Тип прибора учета" (реестровый номер 27).</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="MunicipalResources" type="nsi-base:nsiRef" maxOccurs="2">
+														<xs:annotation>
+															<xs:documentation>Виды КУ. Ссылка на НСИ "Вид коммунального ресурса" (реестровый номер 2). Допустимо указывать несколько видов ресурса только для значений "Горячая вода" и "Холодная вода".</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="DeviceInstallBlockingReason" type="nsi-base:nsiRef">
+														<xs:annotation>
+															<xs:documentation>Ссылка на НСИ "Критерии отсутствия технической возможности установки приборов учета" (реестровый номер 379).</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ExamineOrg" type="organizations-registry-base:RegOrgType">
+														<xs:annotation>
+															<xs:documentation>Организация, проводившая обследование</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ActAbsenceDevice" type="base:AttachmentType" minOccurs="1" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation>Файл акта об отсутствии технической возможности установки приборов учета</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ObjectAbsenceDeviceInfo" type="tns:ObjectAbsenceDeviceInfoImp" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation>Объект жилищного фонда</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="EditAbsenceDeviceInfo">
+											<xs:annotation>
+												<xs:documentation>Внесение изменений в сведения</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="AbsenceDeviceInfoGUID" type="base:GUIDType">
+														<xs:annotation>
+															<xs:documentation>Идентификатор сведений об отсутствии технической возможности установки приборов учета</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ActCreateDate" type="xs:date">
+														<xs:annotation>
+															<xs:documentation>Дата составления акта</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ActExpireDate" type="xs:date" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Дата окончания действия акта</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="DeviceTypeBase" type="nsi-base:nsiRef">
+														<xs:annotation>
+															<xs:documentation>Ссылка на НСИ "Тип прибора учета" (реестровый номер 27).</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="MunicipalResources" type="nsi-base:nsiRef" maxOccurs="2">
+														<xs:annotation>
+															<xs:documentation>Виды КУ. Ссылка на НСИ "Вид коммунального ресурса" (реестровый номер 2). Допустимо указывать несколько видов ресурса только для значений "Горячая вода" и "Холодная вода".</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="DeviceInstallBlockingReason" type="nsi-base:nsiRef">
+														<xs:annotation>
+															<xs:documentation>Ссылка на НСИ "Критерии отсутствия технической возможности установки приборов учета" (реестровый номер 379).</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ExamineOrg" type="organizations-registry-base:RegOrgType">
+														<xs:annotation>
+															<xs:documentation>Организация, проводившая обследование</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ActAbsenceDevice" type="base:AttachmentType" minOccurs="1" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation>Файл акта об отсутствии технической возможности установки приборов учета</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ObjectAbsenceDeviceInfo" type="tns:ObjectAbsenceDeviceInfoImp" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation>Объект жилищного фонда</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="AnnulmentAbsenceDeviceInfo">
+											<xs:annotation>
+												<xs:documentation>Аннулирование сведений</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:complexContent>
+													<xs:extension base="tns:AnnulAbsenceDeviceInfo"/>
+												</xs:complexContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:choice>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute ref="base:version" use="required" fixed="15.10.0.1"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+		<xs:key name="importAbsenceDeviceInfoRequest_TransportGUIDKey">
+			<xs:selector xpath=".//base:TransportGUID"/>
+			<xs:field xpath="."/>
+		</xs:key>
+		<xs:key name="importAbsenceDeviceInfoRequest_AbsenceDeviceInfo_AbsenceDeviceInfoGUID">
+			<xs:selector xpath=".//tns:AbsenceDeviceInfoGUID"/>
+			<xs:field xpath="."/>
+		</xs:key>
+	</xs:element>
+	<!--Экспорт сведений об отсутствии технической возможности установки приборов учета-->
+	<xs:element name="exportAbsenceDeviceInfoRequest">
+		<xs:annotation>
+			<xs:documentation>Экспорт сведений об отсутствии технической возможности установки ПУ</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="base:BaseType">
+					<xs:choice>
+						<xs:element ref="tns:AbsenceDeviceInfoGUID" maxOccurs="100">
+							<xs:annotation>
+								<xs:documentation>Корневой идентификатор сведений (не меняется от версии к версии)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="AbsenceDeviceInfoSearchParams">
+							<xs:annotation>
+								<xs:documentation>Дополнительные условия поиска записей актов</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="IsSearchNotRelevant" type="xs:boolean" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Выгружать сведения в статусе "Действующий"</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="IsSearchAnnul" type="xs:boolean" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Выгружать аннулированные сведения</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="HMobjectGUID" type="base:GUIDType" maxOccurs="100"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+					<xs:attribute ref="base:version" use="required" fixed="15.10.0.1"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<!--Ответ на запрос экспорта сведений об отсутствии технической возможности установки приборов учета-->
+	<xs:complexType name="exportAbsenceDeviceInfoResultType">
+		<xs:annotation>
+			<xs:documentation>Ответ на запрос экспорта сведений об отсутствии технической возможности установки приборов учета</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:AbsenceDeviceInfoExportType"/>
+		</xs:complexContent>
 	</xs:complexType>
 	<!--Импорт ДУ (Договор на управление)-->
 	<xs:element name="importContractRequest">
@@ -8847,10 +9039,10 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 			<xs:field xpath="."/>
 		</xs:key>
 	</xs:element>
-	<!--Голосование-->
+	<!--Голосование - протоколы-->
 	<xs:element name="importVotingProtocolRequest">
 		<xs:annotation>
-			<xs:documentation>Импорт протокола ОСС (протокол общего собрания собственников)</xs:documentation>
+			<xs:documentation>Импорт протокола ОСС (протокол общего собрания собственников) - действия с протоколом ОСС, проведенного без использования системы</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -8858,30 +9050,17 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 					<xs:sequence>
 						<xs:sequence>
 							<xs:element ref="base:TransportGUID"/>
-							<xs:element name="ProtocolGUID" type="base:GUIDType" minOccurs="0">
+							<xs:element name="VotingGUID" type="base:GUIDType">
 								<xs:annotation>
-									<xs:documentation>Идентификатор версии протокола ОСС в ГИС ЖКХ </xs:documentation>
+									<xs:documentation>Корневой идентификатор голосования</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 						</xs:sequence>
 						<xs:choice>
-							<xs:element name="Protocol">
+							<xs:element name="Protocol" type="tns:ProtocolType">
 								<xs:annotation>
-									<xs:documentation>Протокол ОСС</xs:documentation>
+									<xs:documentation>Изменить протокол ОСС. Только для исправления ошибок в ранее размещенные протоколы, не имеющие связи с сообщением</xs:documentation>
 								</xs:annotation>
-								<xs:complexType>
-									<xs:complexContent>
-										<xs:extension base="tns:ProtocolType">
-											<xs:sequence>
-												<xs:element name="Placing" type="xs:boolean" fixed="true" minOccurs="0">
-													<xs:annotation>
-														<xs:documentation>Разместить протокол</xs:documentation>
-													</xs:annotation>
-												</xs:element>
-											</xs:sequence>
-										</xs:extension>
-									</xs:complexContent>
-								</xs:complexType>
 								<xs:unique name="orgRootEntityGUID">
 									<xs:selector xpath="tns:VoteInitiators/tns:Org/organizations-registry-base:orgRootEntityGUID"/>
 									<xs:field xpath="."/>
@@ -8891,29 +9070,24 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 									<xs:field xpath="."/>
 								</xs:unique>
 							</xs:element>
-							<xs:element name="Placing" type="xs:boolean" fixed="true">
-								<xs:annotation>
-									<xs:documentation>Разместить протокол ОСС</xs:documentation>
-								</xs:annotation>
-							</xs:element>
 							<xs:element name="Revert" type="xs:boolean" fixed="true">
 								<xs:annotation>
-									<xs:documentation>Отменить последние изменения</xs:documentation>
+									<xs:documentation>Отменить последние изменения - для удаления версии протокола в стаутсе "На изменении"</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="Delete" type="xs:boolean" fixed="true">
 								<xs:annotation>
-									<xs:documentation>Удалить протокол ОСС</xs:documentation>
+									<xs:documentation>Удалить проект протокола ОСС в статусе "Создан"</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="Annulment" type="tns:AnnulmentProtocolType">
+							<xs:element name="VotingResultsImport" type="tns:VotingResultsImportType">
 								<xs:annotation>
-									<xs:documentation>Аннулировать голосование и всю связанную информацию</xs:documentation>
+									<xs:documentation>Разместить итоги по голосованию вне системы</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 						</xs:choice>
 					</xs:sequence>
-					<xs:attribute ref="base:version" use="required" fixed="15.4.0.1"/>
+					<xs:attribute ref="base:version" use="required" fixed="15.10.0.1"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
@@ -8932,19 +9106,41 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 					<xs:sequence>
 						<xs:sequence>
 							<xs:element ref="base:TransportGUID"/>
-							<xs:element name="MessageGUID" type="base:GUIDType">
+							<xs:element name="VotingGUID" type="base:GUIDType">
 								<xs:annotation>
-									<xs:documentation>Идентификатор сообщения о проведении общего собрания в ГИС ЖКХ </xs:documentation>
+									<xs:documentation>Корневой идентификатор голосования</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 						</xs:sequence>
-						<xs:element name="ExternalVotingProtocol" type="tns:ExternalVotingProtocolType">
-							<xs:annotation>
-								<xs:documentation>Разместить итоги голосования, проведенного с использованием системы, отличной от ГИС ЖКХ</xs:documentation>
-							</xs:annotation>
-						</xs:element>
+						<xs:choice>
+							<xs:element name="PublishResults" type="tns:ExternalVotingProtocolType">
+								<xs:annotation>
+									<xs:documentation>Разместить итоги голосования, проведенного с использованием системы, отличной от ГИС ЖКХ</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ChangeResults">
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="tns:ExternalVotingProtocolType">
+											<xs:sequence>
+												<xs:element name="Modification">
+													<xs:annotation>
+														<xs:documentation>Основание изменения результатов</xs:documentation>
+													</xs:annotation>
+													<xs:simpleType>
+														<xs:restriction base="base:LongTextType">
+															<xs:minLength value="1"/>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
 					</xs:sequence>
-					<xs:attribute ref="base:version" fixed="13.1.8.1"/>
+					<xs:attribute ref="base:version" use="required" fixed="15.10.0.1"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
@@ -8967,37 +9163,28 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 									<xs:documentation>Глобальный уникальный идентификатор дома по ФИАС</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="StatusVersionProtocol" minOccurs="0">
+							<xs:element name="ProtocolStatus" type="tns:ProtocolStatusType" minOccurs="0">
 								<xs:annotation>
 									<xs:documentation>Статус версии протокола ОСС
 Допустимые значения:
 -Created-создан
 -Posted-Размещен
 -Edited-На изменении
--Annuled-Аннулирован
--PostedFromAnotherSystem-Размещен по голосованию в другой системе</xs:documentation>
+-Annuled-Аннулирован</xs:documentation>
 								</xs:annotation>
-								<xs:simpleType>
-									<xs:restriction base="xs:string">
-										<xs:enumeration value="Created"/>
-										<xs:enumeration value="Posted"/>
-										<xs:enumeration value="Edited"/>
-										<xs:enumeration value="Annuled"/>
-										<xs:enumeration value="PostedFromAnotherSystem"/>
-									</xs:restriction>
-								</xs:simpleType>
 							</xs:element>
 						</xs:sequence>
-						<xs:element name="VotingProtocolGUID" type="base:GUIDType" maxOccurs="100">
+						<xs:element name="ProtocolGUID" type="base:GUIDType" maxOccurs="100">
 							<xs:annotation>
-								<xs:documentation>Идентификатор версии протокола голосования</xs:documentation>
+								<xs:documentation>Идентификатор версии протокола</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="RootProtocolGUID" type="base:GUIDType" maxOccurs="100">
+						<xs:element name="VotingGUID" type="base:GUIDType" maxOccurs="100">
 							<xs:annotation>
-								<xs:documentation>Корневой идентификатор протокола голосования</xs:documentation>
+								<xs:documentation>Корневой идентификатор голосования</xs:documentation>
 							</xs:annotation>
 						</xs:element>
+						<xs:element ref="tns:UniqueVotingId" maxOccurs="100"/>
 					</xs:choice>
 					<xs:attribute ref="base:version" use="required" fixed="15.4.0.1"/>
 				</xs:extension>
@@ -9009,77 +9196,10 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 			<xs:documentation>Ответ на запрос экспорта протоколов ОСС</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="tns:ProtocolExportType">
-				<xs:sequence>
-					<xs:element name="StatusProtocol">
-						<xs:annotation>
-							<xs:documentation>Статус протокола ОСС
-Допустимые значения:
--Created-создан
--Posted-Размещен
--Edited-На изменении
--Annuled-Аннулирован
--PostedFromAnotherSystem-Размещен по голосованию в другой системе</xs:documentation>
-						</xs:annotation>
-						<xs:simpleType>
-							<xs:restriction base="xs:string">
-								<xs:enumeration value="Created"/>
-								<xs:enumeration value="Posted"/>
-								<xs:enumeration value="Edited"/>
-								<xs:enumeration value="Annuled"/>
-								<xs:enumeration value="PostedFromAnotherSystem"/>
-							</xs:restriction>
-						</xs:simpleType>
-					</xs:element>
-					<xs:element name="VotingProtocolGUID" type="base:GUIDType">
-						<xs:annotation>
-							<xs:documentation>Идентификатор версии протокола голосования</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="RootProtocolGUID" type="base:GUIDType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>Корневой идентификатор протокола голосования</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="StatusVersionProtocol">
-						<xs:annotation>
-							<xs:documentation>Статус версии протокола ОСС
-Допустимые значения:
--Created-создан
--Posted-Размещен
--Edited-На изменении
--Annuled-Аннулирован
--PostedFromAnotherSystem-Размещен по голосованию в другой системе</xs:documentation>
-						</xs:annotation>
-						<xs:simpleType>
-							<xs:restriction base="xs:string">
-								<xs:enumeration value="Created"/>
-								<xs:enumeration value="Posted"/>
-								<xs:enumeration value="Edited"/>
-								<xs:enumeration value="Annuled"/>
-								<xs:enumeration value="PostedFromAnotherSystem"/>
-							</xs:restriction>
-						</xs:simpleType>
-					</xs:element>
-					<xs:element name="VersionNumber" type="xs:int">
-						<xs:annotation>
-							<xs:documentation>Номер версии протокола</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="VersionDateModification" type="xs:date" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>Дата и время последнего изменения версии протокола</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="VersionDatePlacement" type="xs:date" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>Дата и время размещения версии протокола</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
+			<xs:extension base="tns:ProtocolExportType"/>
 		</xs:complexContent>
 	</xs:complexType>
+	<!--Голосование - сообщения-->
 	<xs:element name="importVotingMessageRequest">
 		<xs:annotation>
 			<xs:documentation>Импорт сообщения о проведениии ОСС</xs:documentation>
@@ -9090,33 +9210,37 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 					<xs:sequence>
 						<xs:sequence>
 							<xs:element ref="base:TransportGUID"/>
-							<xs:element name="MessageGUID" type="base:GUIDType" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Идентификатор сообщения о проведении ОСС в ГИС ЖКХ </xs:documentation>
-								</xs:annotation>
-							</xs:element>
 						</xs:sequence>
 						<xs:choice>
 							<xs:element name="VotingMessage" type="tns:MessageType">
 								<xs:annotation>
-									<xs:documentation>Разместить или изменить сообщение о проведении ОСС</xs:documentation>
+									<xs:documentation>Разместить сообщение о проведении ОСС</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="Refuse" type="xs:boolean" fixed="true">
-								<xs:annotation>
-									<xs:documentation>Отменить голосование по причине размещения 50% отказов
+							<xs:sequence>
+								<xs:element name="MessageGUID" type="base:GUIDType">
+									<xs:annotation>
+										<xs:documentation>Идентификатор сообщения о проведении ОСС в ГИС ЖКХ </xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:choice>
+									<xs:element name="Refuse" type="xs:boolean" fixed="true">
+										<xs:annotation>
+											<xs:documentation>Отменить голосование по причине размещения 50% отказов
 
 Операция доступна только для голосований в форме "Заочное голосование с использованием системы"</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="Annulment" type="tns:AnnulmentProtocolType">
-								<xs:annotation>
-									<xs:documentation>Аннулировать голосование и всю связанную информацию</xs:documentation>
-								</xs:annotation>
-							</xs:element>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Annulment" type="tns:AnnulmentMessageType">
+										<xs:annotation>
+											<xs:documentation>Аннулировать голосование и всю связанную информацию</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:choice>
+							</xs:sequence>
 						</xs:choice>
 					</xs:sequence>
-					<xs:attribute ref="base:version" use="required" fixed="15.4.0.1"/>
+					<xs:attribute ref="base:version" use="required" fixed="15.10.0.1"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
@@ -9140,11 +9264,17 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 						</xs:element>
 						<xs:element name="MessageGUID" type="base:GUIDType" maxOccurs="100">
 							<xs:annotation>
-								<xs:documentation>Корневой идентификатор сообщения о проведении голосования</xs:documentation>
+								<xs:documentation>Идентификатор сообщения о проведении собрания</xs:documentation>
 							</xs:annotation>
 						</xs:element>
+						<xs:element name="VotingGUID" type="base:GUIDType" maxOccurs="100">
+							<xs:annotation>
+								<xs:documentation>Корневой идентификатор голосования</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="tns:UniqueVotingId" maxOccurs="100"/>
 					</xs:choice>
-					<xs:attribute ref="base:version" use="required" fixed="15.4.0.1"/>
+					<xs:attribute ref="base:version" use="required" fixed="15.10.0.1"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
@@ -9154,36 +9284,7 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 			<xs:documentation>Ответ на запрос экспорта сообщений о проведении ОСС</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="tns:MessageExportType">
-				<xs:sequence>
-					<xs:element name="MessageGUID" type="base:GUIDType">
-						<xs:annotation>
-							<xs:documentation>Идентификатор сообщения о проведении голосования</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="MessageStatus" type="tns:MessageStatusType">
-						<xs:annotation>
-							<xs:documentation>Статус сообщения о проведении ОСС
-Допустимые значения:
-- Posted - Размещено
-- Goes - Голосование идет
-- Finished - Голосование завершено
-- MeetingCancelled - Собрание не состоялось
-- Cancelled - Аннулирован</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="PublishDate" type="xs:date">
-						<xs:annotation>
-							<xs:documentation>Дата и время размещения версии сообщения</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="ModificationDate" type="xs:date" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>Дата и время последнего изменения версии сообщения</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
+			<xs:extension base="tns:MessageExportType"/>
 		</xs:complexContent>
 	</xs:complexType>
 	<!--Решение собственника по вопросам голосования-->
@@ -9239,7 +9340,7 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 							</xs:unique>
 						</xs:element>
 					</xs:sequence>
-					<xs:attribute ref="base:version" use="required" fixed="13.0.0.2"/>
+					<xs:attribute ref="base:version" use="required" fixed="15.10.0.1"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
@@ -9250,21 +9351,15 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 	</xs:element>
 	<xs:element name="exportOwnerDecisionRequest">
 		<xs:annotation>
-			<xs:documentation>Экспорт решений собственников по вопросам голосования
-Доступны версии 13.0.0.2 и 13.1.8.1</xs:documentation>
+			<xs:documentation>Экспорт решений собственников по вопросам голосования</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="base:BaseType">
 					<xs:choice>
-						<xs:element name="VotingProtocolGUID" type="base:GUIDType" maxOccurs="100">
+						<xs:element name="ProtocolGUID" type="base:GUIDType" maxOccurs="100">
 							<xs:annotation>
-								<xs:documentation>Идентификатор версии протокола голосования</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="RootProtocolGUID" type="base:GUIDType" maxOccurs="100">
-							<xs:annotation>
-								<xs:documentation>Корневой идентификатор протокола голосования </xs:documentation>
+								<xs:documentation>Идентификатор версии протокола</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="RootOwnerDecisionGUID" type="base:GUIDType" maxOccurs="1000">
@@ -9278,7 +9373,7 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 							</xs:annotation>
 						</xs:element>
 					</xs:choice>
-					<xs:attribute ref="base:version" use="required"/>
+					<xs:attribute ref="base:version" use="required" fixed="15.10.0.1"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
@@ -9288,6 +9383,23 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 			<xs:documentation>Ответ на запрос экспорта решений собственника по вопросу голосования</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+			<xs:element name="VotingGUID" type="base:GUIDType">
+				<xs:annotation>
+					<xs:documentation>Корневой идентификатор голосования</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="MessageGUID" type="base:GUIDType">
+					<xs:annotation>
+						<xs:documentation>Идентификатор сообщения. Заполняется, если запрос экспорта выполняется по идентификаторам сообщений или протокол собрания еще отсутствует</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ProtocolGUID" type="base:GUIDType">
+					<xs:annotation>
+						<xs:documentation>Идентификатор протокола. Заполняется, если запрос экспорта выполняется по идентификаторам протоколов или к сообщению уже размещен протокол</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
 			<xs:element name="RootOwnerDecisionGUID" type="base:GUIDType">
 				<xs:annotation>
 					<xs:documentation>Корневой идентификатор решения собственника по вопросам голосования</xs:documentation>
@@ -9299,10 +9411,45 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 					<xs:documentation>Экспортируемые сведения о собственности</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element ref="tns:Representative" minOccurs="0"/>
+			<xs:element name="Representative" minOccurs="0">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="tns:OwnerRepresentativeType">
+							<xs:sequence minOccurs="0">
+								<xs:element name="RepRightsConfirmDocType" type="tns:RepRightsConfirmDocTypeType">
+									<xs:annotation>
+										<xs:documentation>Тип документа, подтверждающего полномочия</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="RepRightsConfirmDocNumber">
+									<xs:annotation>
+										<xs:documentation>Номер документа, подтверждающего полномочия</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:maxLength value="45"/>
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="RepRightsConfirmDocDate" type="xs:date">
+									<xs:annotation>
+										<xs:documentation>Дата документа, подтверждающего пролномочия</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="QuestionOnDecision" type="tns:QuestionOnDecisionType">
 				<xs:annotation>
 					<xs:documentation>Вопрос повестки</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IsDigitalDecision" type="xs:boolean" fixed="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Признак "Собственник проголосовал с использованием системы". Может быть равно true только для голосований с формой проведения "Заочное голосование с использованием системы"</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Attachments" type="base:AttachmentType" minOccurs="0" maxOccurs="unbounded">
@@ -9426,6 +9573,48 @@ N (ext) - следующего месяца за расчетным. </xs:docume
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
+	<xs:complexType name="OwnerRefusalExportType">
+		<xs:annotation>
+			<xs:documentation>Письменный отказ собственника (для экспорта)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="MessageGUID" type="base:GUIDType">
+				<xs:annotation>
+					<xs:documentation>Корневой идентификатор сообщения о проведении общего собрания</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RefusalGUID" type="base:GUIDType">
+				<xs:annotation>
+					<xs:documentation>Корневой идентификатор письменного отказа собственника</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="tns:Owner"/>
+			<xs:element ref="tns:exportPropertyDetails" maxOccurs="unbounded"/>
+			<xs:element name="Representative" type="tns:OwnerRepresentativeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Сведения о представителе. Заполняется, если отказ внесён представителем собственника</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RefusalAttachments" type="base:AttachmentType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Электронный образ отказа собственника</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RefusalStatus" type="tns:OwnerRefusalStatusType">
+				<xs:annotation>
+					<xs:documentation>Статус письменного отказа собственника.
+Допустимые значения:
+-Posted-Размещен
+-Annuled-Аннулирован</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PublishDate" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Дата и время размещения письменного отказа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
 	<!--Договора социального найма-->
 	<xs:element name="exportBriefSocialHireContractRequest">
 		<xs:annotation>
@@ -9778,6 +9967,20 @@ STATE_(M)UNICIPAL_FUND - Договор найма жилого помещени
 																	<xs:element name="ContractGUID" type="base:GUIDType">
 																		<xs:annotation>
 																			<xs:documentation>Идентификатор версии договора ресурсоснабжения в ГИС ЖКХ          </xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="importVotingInformation">
+															<xs:annotation>
+																<xs:documentation>Заполняется при импорте протокола importVotingProtocolRequest, результатов голосования importExternalVotingProtocolRequest или при импорте сообщения importVotingMessageRequest</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="VotingGUID" type="base:GUIDType">
+																		<xs:annotation>
+																			<xs:documentation>Корневой идентификатор голосования</xs:documentation>
 																		</xs:annotation>
 																	</xs:element>
 																</xs:sequence>
@@ -13653,9 +13856,10 @@ STATE_(M)UNICIPAL_FUND - Договор найма жилого помещени
 					<xs:documentation>Счет закрыт</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Accommodation" maxOccurs="unbounded">
+			<xs:element name="Accommodation" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>Помещение</xs:documentation>
+					<xs:documentation>Помещение. 
+					Поле игнорируется при заполнении блока "Closed"</xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
@@ -13791,9 +13995,10 @@ STATE_(M)UNICIPAL_FUND - Договор найма жилого помещени
 					<xs:documentation>Счет закрыт</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Accommodation" maxOccurs="unbounded">
+			<xs:element name="Accommodation" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>Помещение</xs:documentation>
+					<xs:documentation>Помещение.  
+					Поле игнорируется при заполнении блока "Closed"</xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
@@ -15737,39 +15942,58 @@ Annul-Сведения аннулированы
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Типы для голосования-->
-	<xs:complexType name="VoitingType">
-		<xs:sequence>
-			<xs:element name="VotingPlace">
-				<xs:annotation>
-					<xs:documentation>Место проведения собрания</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:maxLength value="3000"/>
-						<xs:minLength value="1"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
 	<xs:element name="VoteInitiators">
 		<xs:annotation>
 			<xs:documentation>Сведения об инициаторах собрания</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:choice>
-				<xs:element name="Ind" type="tns:VotingInitiatorIndType">
+			<xs:sequence>
+				<xs:element name="Ind" type="tns:VotingInitiatorIndImportType" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>Физическое лицо (собственник помещений)</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element name="Org" type="organizations-registry-base:RegOrgRootAndVersionType">
+				<xs:element name="Org" type="tns:VotingInitiatorOrgImportType" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
-						<xs:documentation>Организация инициатор собрания ИП или Юр. лицо (УО)</xs:documentation>
+						<xs:documentation>Организация инициатор собрания Юр. лицо (собственник)</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-			</xs:choice>
+				<xs:element name="HouseManager" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Организация инициатор собрания Юр. лицо (Лицо, управляющее МКД)</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="tns:VotingInitiatorOrgImportType">
+								<xs:choice>
+									<xs:annotation>
+										<xs:documentation>Тип инициатора</xs:documentation>
+									</xs:annotation>
+									<xs:element name="HouseManager" type="xs:boolean" fixed="true">
+										<xs:annotation>
+											<xs:documentation>Лицо, управляющее МКД</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="OwnersRequestInitiator" type="xs:boolean" fixed="true">
+										<xs:annotation>
+											<xs:documentation>Лицо, управляющее МКД, инициировавшее собрание по обращению собственников</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:choice>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
 		</xs:complexType>
+		<xs:unique name="OrgRootGUID">
+			<xs:selector xpath=".//organizations-registry-base:orgRootEntityGUID"/>
+			<xs:field xpath="."/>
+		</xs:unique>
+		<xs:unique name="OrgGUID">
+			<xs:selector xpath=".//organizations-registry-base:orgVersionGUID"/>
+			<xs:field xpath="."/>
+		</xs:unique>
 	</xs:element>
 	<xs:element name="Attachments">
 		<xs:annotation>
@@ -15786,18 +16010,20 @@ Annul-Сведения аннулированы
 			<xs:documentation>Протокол ОСС</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="FIASHouseGuid" type="premises-base:FIASHouseGUIDType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Глобальный уникальный идентификатор дома по ФИАС
+			<xs:choice>
+				<xs:element name="FIASHouseGuid" type="premises-base:FIASHouseGUIDType">
+					<xs:annotation>
+						<xs:documentation>Глобальный уникальный идентификатор дома по ФИАС
 
 Обязательно к заполнению, если "Тип собрания" = "Собрание собственников" и не заполнено ТСЖ/Кооператив</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="OrganizationGuid" type="organizations-registry-base:RegOrgType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Товарищество Собственников Жилья/ Кооператив</xs:documentation>
-				</xs:annotation>
-			</xs:element>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="OrganizationGuid" type="organizations-registry-base:RegOrgType">
+					<xs:annotation>
+						<xs:documentation>Товарищество Собственников Жилья/ Кооператив</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
 			<xs:element name="ProtocolNum" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Номер протокола</xs:documentation>
@@ -15854,57 +16080,24 @@ Annul-Сведения аннулированы
 </xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
-						<xs:complexContent>
-							<xs:extension base="tns:VoitingType">
-								<xs:sequence>
-									<xs:element name="MeetingDate" type="xs:dateTime">
-										<xs:annotation>
-											<xs:documentation>Дата и время проведения собрания</xs:documentation>
-										</xs:annotation>
-									</xs:element>
-									<xs:element ref="tns:Attachments" maxOccurs="unbounded"/>
-								</xs:sequence>
-							</xs:extension>
-						</xs:complexContent>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="EVoting">
-					<xs:annotation>
-						<xs:documentation>Заочное голосование с использованием системы. Не используется для импорта протоколов</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="EVotingDateBegin" type="xs:dateTime">
+							<xs:element name="VotingPlace">
 								<xs:annotation>
-									<xs:documentation>Дата и время начала проведения голосования</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="EVotingDateEnd" type="xs:dateTime">
-								<xs:annotation>
-									<xs:documentation>Дата и время окончания проведения голосования</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="Discipline">
-								<xs:annotation>
-									<xs:documentation>Порядок приема оформленных в письменной форме решений собственников</xs:documentation>
+									<xs:documentation>Место проведения собрания</xs:documentation>
 								</xs:annotation>
 								<xs:simpleType>
-									<xs:restriction base="base:LongTextType">
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="3000"/>
 										<xs:minLength value="1"/>
 									</xs:restriction>
 								</xs:simpleType>
 							</xs:element>
-							<xs:element name="InfoReview">
+							<xs:element name="MeetingDate" type="xs:dateTime">
 								<xs:annotation>
-									<xs:documentation>Порядок ознакомления с информацией и (или) материалами, которые будут представлены на данном собрании </xs:documentation>
+									<xs:documentation>Дата и время проведения собрания</xs:documentation>
 								</xs:annotation>
-								<xs:simpleType>
-									<xs:restriction base="base:LongTextType">
-										<xs:minLength value="1"/>
-									</xs:restriction>
-								</xs:simpleType>
 							</xs:element>
-							<xs:element ref="tns:Attachments" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="tns:Attachments" maxOccurs="unbounded"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -15957,7 +16150,7 @@ Annul-Сведения аннулированы
 					</xs:complexType>
 				</xs:element>
 			</xs:choice>
-			<xs:element name="MeetingType" type="tns:MeetingTypeType" minOccurs="0">
+			<xs:element name="MeetingType" type="tns:MeetingTypeType">
 				<xs:annotation>
 					<xs:documentation>Тип собрания
 
@@ -15984,7 +16177,7 @@ Annul-Сведения аннулированы
 					</xs:annotation>
 				</xs:element>
 			</xs:choice>
-			<xs:element ref="tns:VoteInitiators" maxOccurs="unbounded"/>
+			<xs:element ref="tns:VoteInitiators"/>
 			<xs:element name="MeetingEligibility">
 				<xs:annotation>
 					<xs:documentation>Правомочность собрания
@@ -16063,17 +16256,17 @@ Annul-Сведения аннулированы
 								<xs:annotation>
 									<xs:documentation>Результаты голосования </xs:documentation>
 								</xs:annotation>
-								<xs:element name="Agree" type="xs:decimal" minOccurs="0">
+								<xs:element name="Agree" type="xs:decimal">
 									<xs:annotation>
 										<xs:documentation>Результаты голосования «За»</xs:documentation>
 									</xs:annotation>
 								</xs:element>
-								<xs:element name="Against" type="xs:decimal" minOccurs="0">
+								<xs:element name="Against" type="xs:decimal">
 									<xs:annotation>
 										<xs:documentation>Результаты голосования «Против»</xs:documentation>
 									</xs:annotation>
 								</xs:element>
-								<xs:element name="Abstent" type="xs:decimal" minOccurs="0">
+								<xs:element name="Abstent" type="xs:decimal">
 									<xs:annotation>
 										<xs:documentation>Результаты голосования «Воздержался»</xs:documentation>
 									</xs:annotation>
@@ -16119,7 +16312,7 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="Modification" minOccurs="0">
+			<xs:element name="Modification">
 				<xs:annotation>
 					<xs:documentation>Основание изменения. Заполняется для протоколов ОСС в статусе "Размещен"</xs:documentation>
 				</xs:annotation>
@@ -16136,23 +16329,32 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 			<xs:documentation>Сообщение о проведении ОСС</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="FIASHouseGUID" type="premises-base:FIASHouseGUIDType" minOccurs="0">
+			<xs:choice>
 				<xs:annotation>
-					<xs:documentation>Глобальный уникальный идентификатор дома по ФИАС
-
-Обязательно к заполнению, если "Тип собрания" = "Собрание собственников" и не заполнено ТСЖ/Кооператив</xs:documentation>
+					<xs:documentation>Режим размещения</xs:documentation>
 				</xs:annotation>
-			</xs:element>
-			<xs:element name="OrganizationGuid" type="organizations-registry-base:RegOrgType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Товарищество Собственников Жилья/ Кооператив</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="MessageNum" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Номер сообщения</xs:documentation>
-				</xs:annotation>
-			</xs:element>
+				<xs:element name="Oprerative" type="xs:boolean" fixed="true">
+					<xs:annotation>
+						<xs:documentation>Оперативный. Предназначен для размещения предстоящих собраний</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:sequence>
+					<xs:annotation>
+						<xs:documentation>Архивный. Предназначен для размещения прошедших собраний, которым ранее был выделен и зарезервирован отдельный идентификатор собрания</xs:documentation>
+					</xs:annotation>
+					<xs:element ref="tns:UniqueVotingId"/>
+					<xs:element name="Password">
+						<xs:annotation>
+							<xs:documentation>Пароль</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="64"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:choice>
 			<xs:element name="MessageDate" type="xs:date" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Дата составления сообщения
@@ -16160,9 +16362,32 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 Обязательна к заполнению для всех сообщений, кроме голосований, проводимых с помощью системы ГИС ЖКХ. Для собраний, проводимых с помощью ГИС ЖКХ значение элемента будет проигнорировано и в дату составления запишется текущая дата и время.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="MeetingType" type="tns:MeetingTypeType">
+				<xs:annotation>
+					<xs:documentation>Тип собрания
+
+Доступны следующие значения:
+-Owners - Собрание собственников
+-Homeowners - Собрание ТСЖ
+-Cooperative - Собрание кооператива</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="FIASHouseGUID" type="premises-base:FIASHouseGUIDType">
+					<xs:annotation>
+						<xs:documentation>Глобальный уникальный идентификатор дома по ФИАС
+Заполняется для типп собрания" = "Собрание собственников"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="OrganizationGuid" type="organizations-registry-base:RegOrgType">
+					<xs:annotation>
+						<xs:documentation>Товарищество Собственников Жилья/ Кооператив</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
 			<xs:choice>
 				<xs:annotation>
-					<xs:documentation>Вид собрание</xs:documentation>
+					<xs:documentation>Вид собрания</xs:documentation>
 				</xs:annotation>
 				<xs:element name="ExtraVoting" type="xs:boolean" fixed="true">
 					<xs:annotation>
@@ -16171,7 +16396,7 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 				</xs:element>
 				<xs:element name="AnnualVoting" type="xs:boolean" fixed="true">
 					<xs:annotation>
-						<xs:documentation>Ежегодное собрание</xs:documentation>
+						<xs:documentation>Годовое собрание</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:choice>
@@ -16216,11 +16441,6 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="MeetingDate" type="xs:dateTime">
-								<xs:annotation>
-									<xs:documentation>Даьа и время проведения собрания</xs:documentation>
-								</xs:annotation>
-							</xs:element>
 							<xs:element name="VotingPlace">
 								<xs:annotation>
 									<xs:documentation>Место проведения собрания</xs:documentation>
@@ -16231,6 +16451,11 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 										<xs:maxLength value="3000"/>
 									</xs:restriction>
 								</xs:simpleType>
+							</xs:element>
+							<xs:element name="MeetingDate" type="xs:dateTime">
+								<xs:annotation>
+									<xs:documentation>Даьа и время проведения собрания</xs:documentation>
+								</xs:annotation>
 							</xs:element>
 							<xs:element ref="tns:Attachments" minOccurs="0" maxOccurs="unbounded"/>
 						</xs:sequence>
@@ -16319,52 +16544,32 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 									</xs:restriction>
 								</xs:simpleType>
 							</xs:element>
-							<xs:element name="VotingSystemDetails" type="tns:VotingSystemDetailsType">
+							<xs:element name="VotingSystemDetails" type="tns:VotingSystemDetailsImportType">
 								<xs:annotation>
 									<xs:documentation>Система, в которой проводится голосование</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="FirstVoting" type="xs:boolean" fixed="true" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Первое ОСС
-
-Заполняется только если  в tns:VotingSystem выбрано "Региональная информационная система" или "ЕПГУ"</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="AdminOfGeneralMeeting" type="tns:AdminOfGeneralMeetingType">
+							<xs:element name="AdminOfGeneralMeeting" type="tns:AdminOfGeneralMeetingImportType">
 								<xs:annotation>
 									<xs:documentation>Сведения об АОСС</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="AdminAddress">
-								<xs:annotation>
-									<xs:documentation>Место или фактический адрес администратора общего собрания</xs:documentation>
-								</xs:annotation>
-								<xs:simpleType>
-									<xs:restriction base="xs:string">
-										<xs:minLength value="1"/>
-										<xs:maxLength value="2000"/>
-									</xs:restriction>
-								</xs:simpleType>
-							</xs:element>
 							<xs:element ref="tns:Attachments" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="StartMakingDecisionDate" type="xs:dateTime">
+								<xs:annotation>
+									<xs:documentation>Дата начала приема решений</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="EndMakingDecisionDate" type="xs:dateTime">
+								<xs:annotation>
+									<xs:documentation>Дата окончания приема решений</xs:documentation>
+								</xs:annotation>
+							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
 			</xs:choice>
-			<xs:element name="MeetingType" type="tns:MeetingTypeType">
-				<xs:annotation>
-					<xs:documentation>Тип собрания
-
-Доступны следующие значения:
--Owners - Собрание собственников
--Homeowners - Собрание ТСЖ
--Cooperative - Собрание кооператива
-
-По умолчанию устанавливается значение "Собрание собственников"</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="tns:VoteInitiators" maxOccurs="unbounded"/>
+			<xs:element ref="tns:VoteInitiators"/>
 			<xs:element name="DecisionList" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Повестка</xs:documentation>
@@ -16387,41 +16592,35 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
-						<xs:element name="DecisionsType" type="nsi-base:nsiRef" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Тип вопроса (НСИ №63)
-
-Обязательно к заполнению, если "Тип собрания" = "Собрание собственников"</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="HomeownersDecisionsType" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Тип вопроса для ТСЖ (НСИ №341)
-
-Обязательно к заполнению, если "Тип собрания" = "Собрание ТСЖ"</xs:documentation>
-							</xs:annotation>
-							<xs:complexType>
-								<xs:complexContent>
-									<xs:extension base="nsi-base:nsiRef"/>
-								</xs:complexContent>
-							</xs:complexType>
-						</xs:element>
-						<xs:choice minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Тип вопроса для Кооператива
-
-Обязательно к заполнению, если "Тип собрания" = "Собрание кооператива" </xs:documentation>
-							</xs:annotation>
-							<xs:element name="CharterContained" type="xs:boolean" fixed="true">
+						<xs:choice>
+							<xs:element name="DecisionsType" type="nsi-base:nsiRef">
 								<xs:annotation>
-									<xs:documentation>Есть в уставе</xs:documentation>
+									<xs:documentation>Тип вопроса (НСИ №63)
+Для "Тип собрания" = "Собрание собственников"</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="CharterNotContained" type="xs:boolean" fixed="true">
+							<xs:element name="HomeownersDecisionsType" type="nsi-base:nsiRef">
 								<xs:annotation>
-									<xs:documentation>Нет в уставе</xs:documentation>
+									<xs:documentation>Тип вопроса для ТСЖ (НСИ №341)
+Для  "Тип собрания" = "Собрание ТСЖ"</xs:documentation>
 								</xs:annotation>
 							</xs:element>
+							<xs:choice>
+								<xs:annotation>
+									<xs:documentation>Тип вопроса для Кооператива
+Для "Тип собрания" = "Собрание кооператива" </xs:documentation>
+								</xs:annotation>
+								<xs:element name="CharterContained" type="xs:boolean" fixed="true">
+									<xs:annotation>
+										<xs:documentation>Есть в уставе</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="CharterNotContained" type="xs:boolean" fixed="true">
+									<xs:annotation>
+										<xs:documentation>Нет в уставе</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:choice>
 						</xs:choice>
 						<xs:element name="FormingFund" type="nsi-base:nsiRef" minOccurs="0">
 							<xs:annotation>
@@ -16431,11 +16630,6 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 						<xs:element name="ManagementType" type="nsi-base:nsiRef" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Выбранный способ управления МКД (справочник «Способ управления» НСИ 25)</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="VotingSystemDetails" type="tns:VotingSystemDetailsType" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Система, в которой проводится голосование. Заполняется только для вопроса "Использование иной информационной системы при проведении общего собрания собственников помещений в многоквартирном доме в форме заочного голосования"</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="AdminOfGeneralMeeting" type="tns:AdminOfGeneralMeetingType" minOccurs="0">
@@ -16448,9 +16642,9 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="ModificationReason" minOccurs="0">
+			<xs:element name="ProtocolCopyStoragePlace">
 				<xs:annotation>
-					<xs:documentation>Основание изменения. Заполняется для сообщений в статусе "Сообщение размещено" и с формой проведения отличной от "Заочное голосование с использованием системы"</xs:documentation>
+					<xs:documentation>Место (адрес) хранения копии протокола общего собрания и решений собственников помещений в многоквартирном доме по вопросам, поставленным на голосование</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="base:LongTextType">
@@ -16465,6 +16659,66 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 			<xs:documentation>Экспорт сообщения о проведении ОСС</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+			<xs:sequence>
+				<xs:element name="VotingGUID" type="base:GUIDType">
+					<xs:annotation>
+						<xs:documentation>Корневой идентификатор голосования</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MessageGUID" type="base:GUIDType">
+					<xs:annotation>
+						<xs:documentation>Идентификатор сообщения о проведении голосования</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MessageStatus" type="tns:MessageStatusType">
+					<xs:annotation>
+						<xs:documentation>Статус сообщения о проведении ОСС
+Допустимые значения:
+- Posted - Размещено
+- Goes - Голосование идет
+- Finished - Голосование завершено
+- MeetingCancelled - Собрание не состоялось
+- Cancelled - Аннулирован</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="VersionNumber" type="xs:int">
+					<xs:annotation>
+						<xs:documentation>Номер версии сообщения</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="LastVersion" type="xs:boolean" fixed="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Признак последней размещенной версии сообщения</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PublishDate" type="xs:dateTime">
+					<xs:annotation>
+						<xs:documentation>Дата и время размещения версии сообщения</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ModificationDate" type="xs:dateTime" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Дата и время последнего изменения версии сообщения</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:sequence minOccurs="0">
+				<xs:element name="PostingMode">
+					<xs:annotation>
+						<xs:documentation>Режим размещения
+
+Oprerative - Оперативный. Предназначен для размещения предстоящих собраний
+Archive - Архивный. Предназначен для размещения прошедших собраний, которым ранее был выделен  идентификатор собрания</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Oprerative"/>
+							<xs:enumeration value="Archive"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element ref="tns:UniqueVotingId"/>
+			</xs:sequence>
 			<xs:element name="FIASHouseGUID" type="premises-base:FIASHouseGUIDType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Глобальный уникальный идентификатор дома по ФИАС
@@ -16489,7 +16743,7 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 			</xs:element>
 			<xs:choice>
 				<xs:annotation>
-					<xs:documentation>Вид собрание</xs:documentation>
+					<xs:documentation>Вид собрания</xs:documentation>
 				</xs:annotation>
 				<xs:element name="ExtraVoting" type="xs:boolean" fixed="true">
 					<xs:annotation>
@@ -16498,7 +16752,7 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 				</xs:element>
 				<xs:element name="AnnualVoting" type="xs:boolean" fixed="true">
 					<xs:annotation>
-						<xs:documentation>Ежегодное собрание</xs:documentation>
+						<xs:documentation>Годовое собрание</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:choice>
@@ -16658,12 +16912,12 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 Заполняется только если  в tns:VotingSystem выбрано "Региональная информационная система" или "ЕПГУ"</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="AdminOfGeneralMeeting" type="tns:AdminOfGeneralMeetingType" minOccurs="0">
+							<xs:element name="AdminOfGeneralMeeting" type="tns:AdminOfGeneralMeetingExportType" minOccurs="0">
 								<xs:annotation>
 									<xs:documentation>Сведения об АОСС</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="AdminAddress">
+							<xs:element name="AdminAddress" minOccurs="0">
 								<xs:annotation>
 									<xs:documentation>Место или фактический адрес администратора общего собрания</xs:documentation>
 								</xs:annotation>
@@ -16675,6 +16929,16 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 								</xs:simpleType>
 							</xs:element>
 							<xs:element ref="tns:Attachments" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="StartMakingDecisionDate" type="xs:dateTime" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Дата начала приема решений</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="EndMakingDecisionDate" type="xs:dateTime" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Дата окончания приема решений</xs:documentation>
+								</xs:annotation>
+							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -16691,93 +16955,29 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 По умолчанию устанавливается значение "Собрание собственников"</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element ref="tns:VoteInitiators" maxOccurs="unbounded"/>
-			<xs:element name="DecisionList" maxOccurs="unbounded">
+			<xs:element name="VoteInitiators" type="tns:VoteInitiatorExportType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Инициаторы собрания</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DecisionList" type="tns:DecisionExportType" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Повестка</xs:documentation>
 				</xs:annotation>
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="QuestionNumber" type="tns:QuestionNumberType" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Номер вопроса</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="QuestionName">
-							<xs:annotation>
-								<xs:documentation>Вопрос</xs:documentation>
-							</xs:annotation>
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:minLength value="1"/>
-									<xs:maxLength value="3000"/>
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:element>
-						<xs:element name="DecisionsType" type="nsi-base:nsiRef" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Тип вопроса (НСИ №63)
-
-Обязательно к заполнению, если "Тип собрания" = "Собрание собственников"</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="HomeownersDecisionsType" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Тип вопроса для ТСЖ (НСИ №341)
-
-Обязательно к заполнению, если "Тип собрания" = "Собрание ТСЖ"</xs:documentation>
-							</xs:annotation>
-							<xs:complexType>
-								<xs:complexContent>
-									<xs:extension base="nsi-base:nsiRef"/>
-								</xs:complexContent>
-							</xs:complexType>
-						</xs:element>
-						<xs:choice minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Тип вопроса для Кооператива
-
-Обязательно к заполнению, если "Тип собрания" = "Собрание кооператива" </xs:documentation>
-							</xs:annotation>
-							<xs:element name="CharterContained" type="xs:boolean" fixed="true">
-								<xs:annotation>
-									<xs:documentation>Есть в уставе</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="CharterNotContained" type="xs:boolean" fixed="true">
-								<xs:annotation>
-									<xs:documentation>Нет в уставе</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-						</xs:choice>
-						<xs:element name="FormingFund" type="nsi-base:nsiRef" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Выбранный способ формирования фонда (справочник «Вид счета\Способ формирования фонда» НСИ 62). При импорте нельзя указывать "Значение не выбрано".</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="ManagementType" type="nsi-base:nsiRef" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Выбранный способ управления МКД (справочник «Способ управления» НСИ 25)</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="VotingSystemDetails" type="tns:VotingSystemDetailsType" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Система, в которой проводится голосование. Заполняется только для вопроса "Использование иной информационной системы при проведении общего собрания собственников помещений в многоквартирном доме в форме заочного голосования"</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="AdminOfGeneralMeeting" type="tns:AdminOfGeneralMeetingType" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Сведения о выбираемом АОСС
-
-Заполняется только для вопросов с типом "Определение администратора общего собрания с указанием СНИЛС и(или) ОГРН"</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
 			</xs:element>
 			<xs:element name="ModificationReason" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Основание изменения. Заполняется для сообщений в статусе "Сообщение размещено" и с формой проведения отличной от "Заочное голосование с использованием системы"</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="base:LongTextType">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ProtocolCopyStoragePlace" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Место (адрес) хранения копии протокола общего собрания и решений собственников помещений в многоквартирном доме по вопросам, поставленным на голосование</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="base:LongTextType">
@@ -16832,7 +17032,7 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
-						<xs:element name="Email" maxOccurs="unbounded">
+						<xs:element name="Email" minOccurs="0" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>Адрес электронной почты</xs:documentation>
 							</xs:annotation>
@@ -16846,21 +17046,560 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="LegalEntityAdministrator" type="organizations-registry-base:RegOrgRootAndVersionType">
+			<xs:element name="LegalEntityAdministrator">
 				<xs:annotation>
 					<xs:documentation>Организация инициатор собрания ИП или Юр. лицо (УО)</xs:documentation>
 				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="organizations-registry-base:RegOrgRootAndVersionType"/>
+					</xs:complexContent>
+				</xs:complexType>
 			</xs:element>
 		</xs:choice>
 	</xs:complexType>
-	<xs:complexType name="AnnulmentProtocolType">
+	<xs:complexType name="AdminOfGeneralMeetingImportType">
+		<xs:annotation>
+			<xs:documentation>Сведения об АОСС для импорта</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="CitizenAdministator">
+				<xs:annotation>
+					<xs:documentation>Физическое лицо (собственник помещений)</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="individual-registry-base:FIOType">
+							<xs:sequence>
+								<xs:element name="AdminOfGeneralMeetingType" type="tns:AdminOfGeneralMeetingTypeType" fixed="Owner">
+									<xs:annotation>
+										<xs:documentation>Роль</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element ref="individual-registry-base:SNILS"/>
+								<xs:sequence>
+									<xs:element name="Type" type="nsi-base:nsiRef">
+										<xs:annotation>
+											<xs:documentation>Документ, удостоверяющий личность  (НСИ 95)</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Series" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Серия документа</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"/>
+												<xs:maxLength value="45"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="Number">
+										<xs:annotation>
+											<xs:documentation>Номер документа</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"/>
+												<xs:maxLength value="45"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="IssueDate" type="xs:date">
+										<xs:annotation>
+											<xs:documentation>Дата выдачи документа</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:element name="PlaceAddress">
+									<xs:annotation>
+										<xs:documentation>Адрес регистрации по месту жительства (пребывания)</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:minLength value="1"/>
+											<xs:maxLength value="2000"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Phone">
+									<xs:annotation>
+										<xs:documentation>Номер контактного телефона</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:minLength value="1"/>
+											<xs:maxLength value="60"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Email" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Адрес электронной почты</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:minLength value="1"/>
+											<xs:maxLength value="60"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="LegalEntityAdministrator">
+				<xs:annotation>
+					<xs:documentation>Организация администратор собрания Юр. лицо (УО или собтсвенник)</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="organizations-registry-base:RegOrgRootAndVersionType">
+							<xs:sequence>
+								<xs:element name="AdminOfGeneralMeetingType" type="tns:AdminOfGeneralMeetingTypeType">
+									<xs:annotation>
+										<xs:documentation>Роль</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="LegalAddress">
+									<xs:annotation>
+										<xs:documentation>Адрес местонахождения</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="base:LongTextType">
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="MailingAddress">
+									<xs:annotation>
+										<xs:documentation>Почтовый адрес</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="base:LongTextType">
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Phone">
+									<xs:annotation>
+										<xs:documentation>Номер контактного телефона</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:maxLength value="250"/>
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Email" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Адрес электронной почты</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="base:LongTextType">
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Website" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Сайт в информационно-телекоммуникационной сети "Интернет"</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:minLength value="1"/>
+											<xs:maxLength value="256"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="OrganizationRepresentative" type="tns:OrganizationRepresentativeType">
+									<xs:annotation>
+										<xs:documentation>Информация о представителе организации</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BusinessmanAdministrator">
+				<xs:annotation>
+					<xs:documentation>Индивидуальный предприниматель администратор собрания (УО)</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="organizations-registry-base:RegOrgRootAndVersionType">
+							<xs:sequence>
+								<xs:element name="AdminOfGeneralMeetingType" type="tns:AdminOfGeneralMeetingTypeType" fixed="HouseManager">
+									<xs:annotation>
+										<xs:documentation>Роль</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="OrganizationChief" type="tns:OrganizationChiefType">
+									<xs:annotation>
+										<xs:documentation>Информация об индивидуальном предпринимателе</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="LegalAddress">
+									<xs:annotation>
+										<xs:documentation>Адрес местонахождения</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="base:LongTextType">
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="MailingAddress">
+									<xs:annotation>
+										<xs:documentation>Почтовый адрес</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="base:LongTextType">
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Phone">
+									<xs:annotation>
+										<xs:documentation>Номер контактного телефона</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:maxLength value="250"/>
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Email" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Адрес электронной почты</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="base:LongTextType">
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Website" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Сайт в информационно-телекоммуникационной сети "Интернет"</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:minLength value="1"/>
+											<xs:maxLength value="256"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="OrganizationRepresentative" type="tns:OrganizationRepresentativeType">
+									<xs:annotation>
+										<xs:documentation>Информация о представителе ИП
+Если сам владелец ИП является администратором, указываются данные ИП</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="AdminOfGeneralMeetingExportType">
+		<xs:annotation>
+			<xs:documentation>Сведения об АОСС для экспорта</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="CitizenAdministator">
+				<xs:annotation>
+					<xs:documentation>Физическое лицо</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="individual-registry-base:FIOType">
+							<xs:sequence>
+								<xs:element name="AdminOfGeneralMeetingType" type="tns:AdminOfGeneralMeetingTypeType" fixed="Owner">
+									<xs:annotation>
+										<xs:documentation>Роль</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element ref="individual-registry-base:SNILS" minOccurs="0"/>
+								<xs:sequence minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Документ, удостоверяющий личность</xs:documentation>
+									</xs:annotation>
+									<xs:element name="Type" type="nsi-base:nsiRef">
+										<xs:annotation>
+											<xs:documentation>Документ, удостоверяющий личность  (НСИ 95)</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Series" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Серия документа</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"/>
+												<xs:maxLength value="45"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="Number">
+										<xs:annotation>
+											<xs:documentation>Номер документа</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"/>
+												<xs:maxLength value="45"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="IssueDate" type="xs:date" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Дата выдачи документа</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+								<xs:element name="Sex" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Пол (M- мужской, F-женский)</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:minLength value="1"/>
+											<xs:maxLength value="1"/>
+											<xs:enumeration value="M"/>
+											<xs:enumeration value="F"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="DateOfBirth" type="xs:date" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Дата рождения</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="PlaceBirth" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Место рождения</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:maxLength value="255"/>
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="PlaceAddress" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Адрес регистрации по месту жительства (пребывания)</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:minLength value="1"/>
+											<xs:maxLength value="2000"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Phone" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>Номер контактного телефона</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:minLength value="1"/>
+											<xs:maxLength value="60"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Email" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>Адрес электронной почты</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:minLength value="1"/>
+											<xs:maxLength value="60"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="LegalEntityAdministrator">
+				<xs:annotation>
+					<xs:documentation>Организация администратор собрания Юр. лицо </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="organizations-registry-base:RegOrgRootAndVersionType">
+							<xs:sequence>
+								<xs:element name="AdminOfGeneralMeetingType" type="tns:AdminOfGeneralMeetingTypeType">
+									<xs:annotation>
+										<xs:documentation>Роль</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="LegalAddress" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Адрес местонахождения</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="base:LongTextType">
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="MailingAddress" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Почтовый адрес</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="base:LongTextType">
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Phone" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>Номер контактного телефона</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:maxLength value="250"/>
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Email" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>Адрес электронной почты</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="base:LongTextType">
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Website" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Сайт в информационно-телекоммуникационной сети "Интернет"</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:minLength value="1"/>
+											<xs:maxLength value="256"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="OrganizationRepresentative" type="tns:OrganizationRepresentativeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Информация о представителе организации</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BusinessmanAdministrator">
+				<xs:annotation>
+					<xs:documentation>Индивидуальный предприниматель администратор собрания</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="organizations-registry-base:RegOrgRootAndVersionType">
+							<xs:sequence>
+								<xs:element name="AdminOfGeneralMeetingType" type="tns:AdminOfGeneralMeetingTypeType" fixed="HouseManager" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Роль</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="OrganizationChief" type="tns:OrganizationChiefType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Информация о руководителе</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="LegalAddress" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Адрес местонахождения</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="base:LongTextType">
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="MailingAddress" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Почтовый адрес</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="base:LongTextType">
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Phone" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>Номер контактного телефона</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:maxLength value="250"/>
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Email" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>Адрес электронной почты</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="base:LongTextType">
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Website" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Сайт в информационно-телекоммуникационной сети "Интернет"</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:minLength value="1"/>
+											<xs:maxLength value="256"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="OrganizationRepresentative" type="tns:OrganizationRepresentativeType" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Информация о представителе организации</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="AnnulmentMessageType">
 		<xs:annotation>
 			<xs:documentation>Аннулирование протокола ОСС</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Modification" minOccurs="0">
+			<xs:element name="NSIAnnulmentReason" type="nsi-base:nsiRef">
 				<xs:annotation>
-					<xs:documentation>Основание аннулирования протокола</xs:documentation>
+					<xs:documentation>Причина аннулирования по НСИ (НСИ№271).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AnnulmentReason" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Основание аннулирования сообщения</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="base:LongTextType">
@@ -16880,7 +17619,7 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:choice>
-			<xs:element name="AnnulmentDate" type="xs:date" minOccurs="0">
+			<xs:element name="AnnulmentDate" type="xs:date">
 				<xs:annotation>
 					<xs:documentation>Дата решения об аннулировании. По умолчанию сохраняется дата выполнения аннулирования</xs:documentation>
 				</xs:annotation>
@@ -16894,11 +17633,6 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 						<xs:maxLength value="50"/>
 					</xs:restriction>
 				</xs:simpleType>
-			</xs:element>
-			<xs:element name="NSIModification" type="nsi-base:nsiRef" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Причина аннулирования по НСИ (НСИ№271). По умолчанию запись с кодом 3 "Ошибка ввода"</xs:documentation>
-				</xs:annotation>
 			</xs:element>
 			<xs:element ref="tns:Attachments" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
@@ -16957,17 +17691,17 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 							<xs:annotation>
 								<xs:documentation>Результаты голосования </xs:documentation>
 							</xs:annotation>
-							<xs:element name="Agree" type="xs:decimal" minOccurs="0">
+							<xs:element name="Agree" type="xs:decimal">
 								<xs:annotation>
 									<xs:documentation>Результаты голосования «За»</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="Against" type="xs:decimal" minOccurs="0">
+							<xs:element name="Against" type="xs:decimal">
 								<xs:annotation>
 									<xs:documentation>Результаты голосования «Против»</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="Abstent" type="xs:decimal" minOccurs="0">
+							<xs:element name="Abstent" type="xs:decimal">
 								<xs:annotation>
 									<xs:documentation>Результаты голосования «Воздержался»</xs:documentation>
 								</xs:annotation>
@@ -16993,11 +17727,160 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 			<xs:element ref="tns:Attachments" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:complexType name="VotingResultsImportType">
+		<xs:annotation>
+			<xs:documentation>Итоги для голосований без использования системы</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Modification" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Основание изменения. Заполняется для протоколов ОСС в статусе "Размещен"</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="base:LongTextType">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ProtocolDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата составления протокола</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MeetingEligibility">
+				<xs:annotation>
+					<xs:documentation>Правомочность собрания
+Допустимые значения
+(C)OMPETENT - Правомочно (имеет кворум)
+(N)OT_COMPETENT- Не правомочно (кворум отсутствует)
+</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="C"/>
+						<xs:enumeration value="N"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DecisionList" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Повестка</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="QuestionNumber" type="tns:QuestionNumberType">
+							<xs:annotation>
+								<xs:documentation>Номер вопроса</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:sequence>
+							<xs:annotation>
+								<xs:documentation>Результаты голосования </xs:documentation>
+							</xs:annotation>
+							<xs:element name="Agree" type="xs:decimal">
+								<xs:annotation>
+									<xs:documentation>Результаты голосования «За»</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Against" type="xs:decimal">
+								<xs:annotation>
+									<xs:documentation>Результаты голосования «Против»</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Abstent" type="xs:decimal">
+								<xs:annotation>
+									<xs:documentation>Результаты голосования «Воздержался»</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:element name="VotingResume">
+							<xs:annotation>
+								<xs:documentation>Итог голосования
+Допустимые значения:
+DECISION_IS_(M)ADE - решение принято
+DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="M"/>
+									<xs:enumeration value="N"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+				<xs:unique name="QuestionNumber">
+					<xs:selector xpath="tns:QuestionNumber"/>
+					<xs:field xpath="."/>
+				</xs:unique>
+			</xs:element>
+			<xs:element ref="tns:Attachments" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="ProtocolExportType">
 		<xs:annotation>
 			<xs:documentation>Протокол ОСС (для экспорта)</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+			<xs:sequence>
+				<xs:element name="VotingGUID" type="base:GUIDType">
+					<xs:annotation>
+						<xs:documentation>Корневой идентификатор голосования</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ProtocolGUID" type="base:GUIDType">
+					<xs:annotation>
+						<xs:documentation>Идентификатор версии протокола</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ProtocolStatus" type="tns:ProtocolStatusType">
+					<xs:annotation>
+						<xs:documentation>Статус версии протокола ОСС
+Допустимые значения:
+-Created-создан
+-Posted-Размещен
+-Edited-На изменении
+-Annuled-Аннулирован</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="VersionNumber" type="xs:int">
+					<xs:annotation>
+						<xs:documentation>Номер версии протокола</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="LastVersion" type="xs:boolean" fixed="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Признак последней размещенной версии протокола</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PublishDate" type="xs:date" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Дата и время размещения версии протокола</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ModificationDate" type="xs:date">
+					<xs:annotation>
+						<xs:documentation>Дата и время последнего изменения версии протокола</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:sequence minOccurs="0">
+				<xs:element name="MessagePostingMode">
+					<xs:annotation>
+						<xs:documentation>Режим размещения сообщения
+
+Oprerative - Оперативный. Предназначен для размещения предстоящих собраний
+Archive - Архивный. Предназначен для размещения прошедших собраний, которым ранее был выделен  идентификатор собрания</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Oprerative"/>
+							<xs:enumeration value="Archive"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element ref="tns:UniqueVotingId"/>
+			</xs:sequence>
 			<xs:element name="FIASHouseGuid" type="premises-base:FIASHouseGUIDType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Глобальный уникальный идентификатор дома по ФИАС</xs:documentation>
@@ -17064,18 +17947,25 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 </xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
-						<xs:complexContent>
-							<xs:extension base="tns:VoitingType">
-								<xs:sequence>
-									<xs:element name="MeetingDate" type="xs:dateTime">
-										<xs:annotation>
-											<xs:documentation>Дата и время проведения собрания</xs:documentation>
-										</xs:annotation>
-									</xs:element>
-									<xs:element ref="tns:Attachments" maxOccurs="unbounded"/>
-								</xs:sequence>
-							</xs:extension>
-						</xs:complexContent>
+						<xs:sequence>
+							<xs:element name="VotingPlace">
+								<xs:annotation>
+									<xs:documentation>Место проведения собрания </xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="3000"/>
+										<xs:minLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="MeetingDate" type="xs:dateTime">
+								<xs:annotation>
+									<xs:documentation>Дата и время проведения собрания</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="tns:Attachments" maxOccurs="unbounded"/>
+						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="EVoting">
@@ -17127,6 +18017,16 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element ref="tns:Attachments" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="StartMakingDecisionDate" type="xs:dateTime" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Дата начала приема решений</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="EndMakingDecisionDate" type="xs:dateTime" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Дата окончания приема решений</xs:documentation>
+								</xs:annotation>
+							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -17179,7 +18079,7 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 					</xs:complexType>
 				</xs:element>
 			</xs:choice>
-			<xs:element name="MeetingType" type="tns:MeetingTypeType" minOccurs="0">
+			<xs:element name="MeetingType" type="tns:MeetingTypeType">
 				<xs:annotation>
 					<xs:documentation>Тип собрания
 
@@ -17200,28 +18100,14 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 				</xs:element>
 				<xs:element name="AnnualVoting" type="xs:boolean" fixed="true">
 					<xs:annotation>
-						<xs:documentation>Ежегодное собрание</xs:documentation>
+						<xs:documentation>Годовое собрание</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:choice>
-			<xs:element name="VoteInitiators" minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="VoteInitiators" type="tns:VoteInitiatorExportType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Сведения об инициаторах собрания</xs:documentation>
 				</xs:annotation>
-				<xs:complexType>
-					<xs:choice>
-						<xs:element name="Ind" type="tns:VotingInitiatorIndType">
-							<xs:annotation>
-								<xs:documentation>Физическое лицо (собственник помещений)</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="Org" type="organizations-registry-base:RegOrgVersionType">
-							<xs:annotation>
-								<xs:documentation>Организация инициатор собрания ИП или Юр. лицо (УО)</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-					</xs:choice>
-				</xs:complexType>
 			</xs:element>
 			<xs:element name="MeetingEligibility">
 				<xs:annotation>
@@ -17243,54 +18129,8 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 					<xs:documentation>Повестка</xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
-					<xs:sequence>
-						<xs:sequence>
-							<xs:element name="QuestionNumber" type="tns:QuestionNumberType" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Номер вопроса</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="QuestionName">
-								<xs:annotation>
-									<xs:documentation>Вопрос</xs:documentation>
-								</xs:annotation>
-								<xs:simpleType>
-									<xs:restriction base="xs:string">
-										<xs:minLength value="1"/>
-										<xs:maxLength value="3000"/>
-									</xs:restriction>
-								</xs:simpleType>
-							</xs:element>
-							<xs:element name="DecisionsType" type="nsi-base:nsiRef" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Тип вопроса (НСИ №63)</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="HomeownersDecisionsType" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Тип вопроса для ТСЖ (НСИ №341)</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:complexContent>
-										<xs:extension base="nsi-base:nsiRef"/>
-									</xs:complexContent>
-								</xs:complexType>
-							</xs:element>
-							<xs:choice minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Тип вопроса для Кооператива</xs:documentation>
-								</xs:annotation>
-								<xs:element name="CharterContained" type="xs:boolean" fixed="true">
-									<xs:annotation>
-										<xs:documentation>Есть в уставе</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="CharterNotContained" type="xs:boolean" fixed="true">
-									<xs:annotation>
-										<xs:documentation>Нет в уставе</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-							</xs:choice>
+					<xs:complexContent>
+						<xs:extension base="tns:DecisionExportType">
 							<xs:sequence>
 								<xs:annotation>
 									<xs:documentation>Результаты голосования </xs:documentation>
@@ -17310,50 +18150,38 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 										<xs:documentation>Результаты голосования «Воздержался»</xs:documentation>
 									</xs:annotation>
 								</xs:element>
-							</xs:sequence>
-							<xs:element name="FormingFund" type="nsi-base:nsiRef" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Выбранный способ формирования фонда (справочник «Вид счета\Способ формирования фонда» НСИ 62)</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="ManagementType" type="nsi-base:nsiRef" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Выбранный способ управления МКД (справочник «Способ управления» НСИ 25)</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="VotingSystemDetails" type="tns:VotingSystemDetailsType" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Система, в которой проводится голосование. Заполняется только для вопроса "Использование иной информационной системы при проведении общего собрания собственников помещений в многоквартирном доме в форме заочного голосования"</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="AdminOfGeneralMeeting" type="tns:AdminOfGeneralMeetingType" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Сведения о выбираемом АОСС
-
-Заполняется только для вопросов с типом "Определение администратора общего собрания с указанием СНИЛС и(или) ОГРН"</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-						</xs:sequence>
-						<xs:element name="votingResume" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Итог голосования
+								<xs:element name="votingResume" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Итог голосования
 Допустимые значения:
 DECISION_IS_(M)ADE - решение принято
 DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
-							</xs:annotation>
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:enumeration value="M"/>
-									<xs:enumeration value="N"/>
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:element>
-					</xs:sequence>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="M"/>
+											<xs:enumeration value="N"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="Modification" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Основание изменения. Заполняется для протоколов ОСС в статусе "Размещен"</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="base:LongTextType">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ProtocolCopyStoragePlace" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Место (адрес) хранения копии протокола общего собрания и решений собственников помещений в многоквартирном доме по вопросам, поставленным на голосование</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="base:LongTextType">
@@ -17406,6 +18234,44 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 				</xs:simpleType>
 			</xs:element>
 		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VotingSystemDetailsImportType">
+		<xs:annotation>
+			<xs:documentation>Информация о системе, в которой проводится собрание, для импорта</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="HCS" type="xs:boolean" fixed="true">
+				<xs:annotation>
+					<xs:documentation>Система, в которой проводится голосование - ГИС ЖКХ</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:sequence>
+				<xs:annotation>
+					<xs:documentation>Информация о региональной информационной системе</xs:documentation>
+				</xs:annotation>
+				<xs:element name="VotingSystemGuid" type="base:GUIDType">
+					<xs:annotation>
+						<xs:documentation>Идентификатор региональной системы, зарегистрированной в ГИС ЖКХ</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="VotingSystemUrl">
+					<xs:annotation>
+						<xs:documentation>Адрес в сети Интернет</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="2000"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="FirstVoting" type="xs:boolean" fixed="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Первое ОСС</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="PublicPropertyContractType">
 		<xs:sequence>
@@ -17697,9 +18563,43 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 							<xs:documentation>Дата рождения</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:sequence>
-						<xs:element ref="individual-registry-base:SNILS" minOccurs="0"/>
-						<xs:element ref="tns:VotingInitiatorIndID" minOccurs="0"/>
+					<xs:element ref="individual-registry-base:SNILS" minOccurs="0"/>
+					<xs:sequence minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Документ, удостоверяющий личность</xs:documentation>
+						</xs:annotation>
+						<xs:element name="Type" type="nsi-base:nsiRef">
+							<xs:annotation>
+								<xs:documentation>Документ, удостоверяющий личность  (НСИ 95)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Series" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Серия документа</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="45"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Number">
+							<xs:annotation>
+								<xs:documentation>Номер документа</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="45"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="IssueDate" type="xs:date" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Дата выдачи документа</xs:documentation>
+							</xs:annotation>
+						</xs:element>
 					</xs:sequence>
 					<xs:element name="PlaceBirth" minOccurs="0">
 						<xs:annotation>
@@ -17716,12 +18616,271 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:complexType name="VotingInitiatorIndImportType">
+		<xs:annotation>
+			<xs:documentation>Инициатор - собственник, физическое лицо или индивидуальный предприниматель, тип для импорта</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="individual-registry-base:FIOType">
+				<xs:sequence>
+					<xs:element ref="individual-registry-base:SNILS"/>
+					<xs:sequence>
+						<xs:annotation>
+							<xs:documentation>Документ, удоствоверяющий личность</xs:documentation>
+						</xs:annotation>
+						<xs:element name="Type" type="nsi-base:nsiRef">
+							<xs:annotation>
+								<xs:documentation>Документ, удостоверяющий личность  (НСИ 95)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Series" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Серия документа</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="45"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Number">
+							<xs:annotation>
+								<xs:documentation>Номер документа</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="45"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="IssueDate" type="xs:date">
+							<xs:annotation>
+								<xs:documentation>Дата выдачи документа</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:element name="ResidenceAddress">
+						<xs:annotation>
+							<xs:documentation>Адрес регистрации по месту жительства или пребывания</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="base:LongTextType">
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Phone">
+						<xs:annotation>
+							<xs:documentation>Номер контактного телефона</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="250"/>
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Email" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Адрес электронной почты</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="base:LongTextType">
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="VotingInitiatorOrgImportType">
+		<xs:annotation>
+			<xs:documentation>Инициатор - юридическое лицо, тип для импорта</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="organizations-registry-base:RegOrgRootAndVersionType">
+				<xs:sequence>
+					<xs:element name="LegalAddress">
+						<xs:annotation>
+							<xs:documentation>Адрес местонахождения</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="base:LongTextType">
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="MailingAddress">
+						<xs:annotation>
+							<xs:documentation>Почтовый адрес</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="base:LongTextType">
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Phone">
+						<xs:annotation>
+							<xs:documentation>Номер контактного телефона</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="250"/>
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Email" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Адрес электронной почты</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="base:LongTextType">
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Website" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сайт в информационно-телекоммуникационной сети "Интернет"</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:minLength value="1"/>
+								<xs:maxLength value="256"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="OrganizationRepresentative" type="tns:OrganizationRepresentativeType">
+						<xs:annotation>
+							<xs:documentation>Информация о представителе организации</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="VotingInitiatorOrgExportType">
+		<xs:annotation>
+			<xs:documentation>Инициатор - юридическое лицо, тип для экспорта</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="organizations-registry-base:RegOrgRootAndVersionType">
+				<xs:sequence>
+					<xs:element name="LegalAddress" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Адрес местонахождения</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="base:LongTextType">
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="MailingAddress" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Почтовый адрес</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="base:LongTextType">
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Phone" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Номер контактного телефона</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="250"/>
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Email" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Адрес электронной почты</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="base:LongTextType">
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Website" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сайт в информационно-телекоммуникационной сети "Интернет"</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:minLength value="1"/>
+								<xs:maxLength value="256"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="OrganizationRepresentative" type="tns:OrganizationRepresentativeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Информация о представителе организации</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:element name="VotingInitiatorIndID">
 		<xs:annotation>
 			<xs:documentation>Удостоверение личности</xs:documentation>
 		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
+		<xs:complexType/>
+	</xs:element>
+	<xs:complexType name="OrganizationRepresentativeType">
+		<xs:annotation>
+			<xs:documentation>Представитель организации в голосовании</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Surname" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Фамилия</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="FirstName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Имя</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Patronymic" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Отчество</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element ref="individual-registry-base:SNILS" minOccurs="0"/>
+			<xs:sequence minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Документ, удостоверяющий личность</xs:documentation>
+				</xs:annotation>
 				<xs:element name="Type" type="nsi-base:nsiRef">
 					<xs:annotation>
 						<xs:documentation>Документ, удостоверяющий личность  (НСИ 95)</xs:documentation>
@@ -17749,14 +18908,122 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
-				<xs:element name="IssueDate" type="xs:date" minOccurs="0">
+			</xs:sequence>
+			<xs:element name="Position">
+				<xs:annotation>
+					<xs:documentation>Должность</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="256"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PositionDocument" type="tns:PositionDocumentType">
+				<xs:annotation>
+					<xs:documentation>Вид документа о назначении на должность
+
+Order - Приказ
+PowerOfAttorney - Доверенность
+Contract - Трудовой договор</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DocumentNumber">
+				<xs:annotation>
+					<xs:documentation>Номер документа о назначении на должность</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="256"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DocumentDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата документа о назначении на должность</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OrganizationChiefType">
+		<xs:annotation>
+			<xs:documentation>Руководитель организации в голосовании</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Surname">
+				<xs:annotation>
+					<xs:documentation>Фамилия</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="FirstName">
+				<xs:annotation>
+					<xs:documentation>Имя</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Patronymic" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Отчество</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:sequence>
+				<xs:annotation>
+					<xs:documentation>Документ, удостоверяющий личность</xs:documentation>
+				</xs:annotation>
+				<xs:element name="Type" type="nsi-base:nsiRef">
+					<xs:annotation>
+						<xs:documentation>Документ, удостоверяющий личность  (НСИ 95)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Series" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Серия документа</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="45"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Number">
+					<xs:annotation>
+						<xs:documentation>Номер документа</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="45"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="IssueDate" type="xs:date">
 					<xs:annotation>
 						<xs:documentation>Дата выдачи документа</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:simpleType name="MeetingTypeType">
 		<xs:annotation>
 			<xs:documentation>Тип собрания</xs:documentation>
@@ -17815,6 +19082,67 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 			<xs:maxInclusive value="9999"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="PositionDocumentType">
+		<xs:annotation>
+			<xs:documentation>Документ о назначении на должность</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Order">
+				<xs:annotation>
+					<xs:documentation>Приказ</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PowerOfAttorney">
+				<xs:annotation>
+					<xs:documentation>Доверенность</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Contract">
+				<xs:annotation>
+					<xs:documentation>Трудовой договор</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InitiatorTypeType">
+		<xs:annotation>
+			<xs:documentation>Тип инициатора голосования</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Owner">
+				<xs:annotation>
+					<xs:documentation>Собственник</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HouseManager">
+				<xs:annotation>
+					<xs:documentation>Лицо, управляющее МКД</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OwnersRequestInitiator">
+				<xs:annotation>
+					<xs:documentation>Лицо, управляющее МКД, инициировавшее собрание по обращению собственников</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AdminOfGeneralMeetingTypeType">
+		<xs:annotation>
+			<xs:documentation>Тип АОСС</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Owner">
+				<xs:annotation>
+					<xs:documentation>Собственник</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HouseManager">
+				<xs:annotation>
+					<xs:documentation>Лицо, управляющее МКД</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
 	<!--Типы для Решений-->
 	<xs:complexType name="OwnerDecisionType">
 		<xs:annotation>
@@ -17823,23 +19151,61 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 		<xs:sequence>
 			<xs:element ref="tns:Owner"/>
 			<xs:element ref="tns:PropertyDetails" maxOccurs="unbounded"/>
-			<xs:element ref="tns:Representative" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Сведения о представителе.
-
-Заполняется, если в голосании участвует представитель собственника</xs:documentation>
-				</xs:annotation>
+			<xs:element name="Representative" minOccurs="0">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="tns:OwnerRepresentativeType">
+							<xs:sequence>
+								<xs:element name="RepRightsConfirmDocType" type="tns:RepRightsConfirmDocTypeType">
+									<xs:annotation>
+										<xs:documentation>Тип документа, подтверждающего полномочия</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="RepRightsConfirmDocNumber">
+									<xs:annotation>
+										<xs:documentation>Номер документа, подтверждающего полномочия</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:maxLength value="45"/>
+											<xs:minLength value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="RepRightsConfirmDocDate" type="xs:date">
+									<xs:annotation>
+										<xs:documentation>Дата документа, подтверждающего пролномочия</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
 			</xs:element>
 			<xs:element name="QuestionOnDecision" type="tns:QuestionOnDecisionType">
 				<xs:annotation>
 					<xs:documentation>Вопрос повестки</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="DecisionAttachments" type="base:AttachmentType" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>Электронный образ решения собственника</xs:documentation>
-				</xs:annotation>
-			</xs:element>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="IsDigitalDecision" type="xs:boolean" fixed="true">
+						<xs:annotation>
+							<xs:documentation>Признак "Собственник проголосовал с использованием системы". Может быть равно true только для голосований с формой проведения "Заочное голосование с использованием системы"</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="AdditionalAttachments" type="base:AttachmentType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Дополнительные файлы к решению</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="DecisionAttachments" type="base:AttachmentType" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Электронный образ решения собственника</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="QuestionOnDecisionType">
@@ -17872,11 +19238,6 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:choice>
-			<xs:element name="IsDigitalDecision" type="xs:boolean" fixed="true" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Признак "Собственник проголосовал с использованием системы". Может быть равно true только для голосований с формой проведения "Заочное голосование с использованием системы"</xs:documentation>
-				</xs:annotation>
-			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="exportQuestionOnDecisionType">
@@ -18189,54 +19550,28 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="Representative">
+	<xs:simpleType name="RepRightsConfirmDocTypeType">
 		<xs:annotation>
-			<xs:documentation>Сведения о представителе</xs:documentation>
+			<xs:documentation>Тип документа, подтверждающего полномочия представителя</xs:documentation>
 		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice>
-					<xs:element name="RepresentativeInd">
-						<xs:annotation>
-							<xs:documentation>Физическое лицо (представитель)</xs:documentation>
-						</xs:annotation>
-						<xs:complexType>
-							<xs:complexContent>
-								<xs:extension base="tns:DecisionIndType">
-									<xs:sequence minOccurs="0">
-										<xs:annotation>
-											<xs:documentation>Документы удостоверяющие личность</xs:documentation>
-										</xs:annotation>
-										<xs:element ref="individual-registry-base:SNILS" minOccurs="0"/>
-										<xs:element ref="tns:DecisionIndID" minOccurs="0">
-											<xs:annotation>
-												<xs:documentation>Удостоверение личности представителя</xs:documentation>
-											</xs:annotation>
-										</xs:element>
-									</xs:sequence>
-								</xs:extension>
-							</xs:complexContent>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="RepresentativeOrg" type="organizations-registry-base:RegOrgRootAndVersionType">
-						<xs:annotation>
-							<xs:documentation>Организация представитель ИП или Юр. лицо</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-				</xs:choice>
-				<xs:element name="Notarized" type="xs:boolean">
-					<xs:annotation>
-						<xs:documentation>Представитель собственника действует на основании  доверенности, удостоверенной нотариально</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element name="RepresentativeAttachments" type="base:AttachmentType" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation>
-						<xs:documentation>Документ, подтверждающий законное представительство собственника помещения</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PowerOfAttorney">
+				<xs:annotation>
+					<xs:documentation>Доверенность</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BirthCertificate">
+				<xs:annotation>
+					<xs:documentation>Свидетельство о рождении</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GuardianshipAct">
+				<xs:annotation>
+					<xs:documentation>Акт органа опеки</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
 	<!-- Типы для письменных отказов собственников -->
 	<xs:complexType name="OwnerRefusalType">
 		<xs:annotation>
@@ -18245,7 +19580,7 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 		<xs:sequence>
 			<xs:element ref="tns:Owner"/>
 			<xs:element ref="tns:PropertyDetails" maxOccurs="unbounded"/>
-			<xs:element ref="tns:Representative" minOccurs="0">
+			<xs:element name="Representative" type="tns:OwnerRepresentativeType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Сведения о представителе. Заполняется, если отказ внесён представителем собственника</xs:documentation>
 				</xs:annotation>
@@ -18274,48 +19609,6 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:complexType name="OwnerRefusalExportType">
-		<xs:annotation>
-			<xs:documentation>Письменный отказ собственника (для экспорта)</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="MessageGUID" type="base:GUIDType">
-				<xs:annotation>
-					<xs:documentation>Корневой идентификатор сообщения о проведении общего собрания</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="RefusalGUID" type="base:GUIDType">
-				<xs:annotation>
-					<xs:documentation>Корневой идентификатор письменного отказа собственника</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element ref="tns:Owner"/>
-			<xs:element ref="tns:exportPropertyDetails" maxOccurs="unbounded"/>
-			<xs:element ref="tns:Representative" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Сведения о представителе. Заполняется, если отказ внесён представителем собственника</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="RefusalAttachments" type="base:AttachmentType" minOccurs="0" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>Электронный образ отказа собственника</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="RefusalStatus" type="tns:OwnerRefusalStatusType">
-				<xs:annotation>
-					<xs:documentation>Статус письменного отказа собственника.
-Допустимые значения:
--Posted-Размещен
--Annuled-Аннулирован</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="PublishDate" type="xs:dateTime">
-				<xs:annotation>
-					<xs:documentation>Дата и время размещения письменного отказа</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
 	<!--Типы для ДР-->
 	<xs:complexType name="ObjectAddressType">
 		<xs:annotation>
@@ -19764,6 +21057,397 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 			<xs:element name="HostelType" type="nsi-base:nsiRef" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Тип общежития (значения из справочника 362)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UniqueVotingId">
+		<xs:annotation>
+			<xs:documentation>Уникальный идентификатор собрания</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:long">
+				<xs:totalDigits value="14"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:simpleType name="ProtocolStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Created">
+				<xs:annotation>
+					<xs:documentation>Создан</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Posted">
+				<xs:annotation>
+					<xs:documentation>Размещен</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Edited">
+				<xs:annotation>
+					<xs:documentation>На изменении</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Annuled">
+				<xs:annotation>
+					<xs:documentation>Аннулирован</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="HouseManagerInitiatorExportType">
+		<xs:complexContent>
+			<xs:extension base="tns:VotingInitiatorOrgExportType">
+				<xs:choice>
+					<xs:annotation>
+						<xs:documentation>Тип инициатора</xs:documentation>
+					</xs:annotation>
+					<xs:element name="HouseManager" type="xs:boolean" fixed="true">
+						<xs:annotation>
+							<xs:documentation>Лицо, управляющее МКД</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OwnersRequestInitiator" type="xs:boolean" fixed="true">
+						<xs:annotation>
+							<xs:documentation>Лицо, управляющее МКД, инициировавшее собрание по обращению собственников</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OwnerCitizenInitiatorExportType">
+		<xs:complexContent>
+			<xs:extension base="tns:VotingInitiatorIndType">
+				<xs:sequence>
+					<xs:element name="ResidenceAddress" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Адрес регистрации по месту жительства или пребывания</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="base:LongTextType">
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Phone" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Номер контактного телефона</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="250"/>
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Email" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Адрес электронной почты</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="base:LongTextType">
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="VoteInitiatorExportType">
+		<xs:choice>
+			<xs:element name="Ind" type="tns:OwnerCitizenInitiatorExportType">
+				<xs:annotation>
+					<xs:documentation>Физическое лицо (собственник помещений)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Org" type="tns:VotingInitiatorOrgExportType">
+				<xs:annotation>
+					<xs:documentation>Организация инициатор собрания (собственник)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HouseManager" type="tns:HouseManagerInitiatorExportType">
+				<xs:annotation>
+					<xs:documentation>Организация инициатор собрания (УО)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="DecisionExportType">
+		<xs:sequence>
+			<xs:element name="QuestionNumber" type="tns:QuestionNumberType">
+				<xs:annotation>
+					<xs:documentation>Номер вопроса</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="QuestionName">
+				<xs:annotation>
+					<xs:documentation>Вопрос</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="3000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DecisionsType" type="nsi-base:nsiRef" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Тип вопроса (НСИ №63)
+
+Обязательно к заполнению, если "Тип собрания" = "Собрание собственников"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HomeownersDecisionsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Тип вопроса для ТСЖ (НСИ №341)
+
+Обязательно к заполнению, если "Тип собрания" = "Собрание ТСЖ"</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="nsi-base:nsiRef"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:choice minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Тип вопроса для Кооператива
+
+Обязательно к заполнению, если "Тип собрания" = "Собрание кооператива" </xs:documentation>
+				</xs:annotation>
+				<xs:element name="CharterContained" type="xs:boolean" fixed="true">
+					<xs:annotation>
+						<xs:documentation>Есть в уставе</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CharterNotContained" type="xs:boolean" fixed="true">
+					<xs:annotation>
+						<xs:documentation>Нет в уставе</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="FormingFund" type="nsi-base:nsiRef" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Выбранный способ формирования фонда (справочник «Вид счета\Способ формирования фонда» НСИ 62). При импорте нельзя указывать "Значение не выбрано".</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ManagementType" type="nsi-base:nsiRef" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Выбранный способ управления МКД (справочник «Способ управления» НСИ 25)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="VotingSystemDetails" type="tns:VotingSystemDetailsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Система, в которой проводится голосование. Заполняется только для вопроса "Использование иной информационной системы при проведении общего собрания собственников помещений в многоквартирном доме в форме заочного голосования"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdminOfGeneralMeeting" type="tns:AdminOfGeneralMeetingType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Сведения о выбираемом АОСС
+
+Заполняется только для вопросов с типом "Определение администратора общего собрания с указанием СНИЛС и(или) ОГРН"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OwnerRepresentativeType">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="RepresentativeInd">
+					<xs:annotation>
+						<xs:documentation>Физическое лицо (представитель)</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="tns:DecisionIndType">
+								<xs:sequence minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Документы удостоверяющие личность</xs:documentation>
+									</xs:annotation>
+									<xs:element ref="individual-registry-base:SNILS" minOccurs="0"/>
+									<xs:element ref="tns:DecisionIndID" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Удостоверение личности представителя</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RepresentativeOrg" type="organizations-registry-base:RegOrgRootAndVersionType">
+					<xs:annotation>
+						<xs:documentation>Организация представитель ИП или Юр. лицо</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="Notarized" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Представитель собственника действует на основании  доверенности, удостоверенной нотариально</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RepresentativeAttachments" type="base:AttachmentType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Документ, подтверждающий законное представительство собственника помещения</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ObjectAbsenceDeviceInfo">
+		<xs:sequence>
+			<xs:element name="HMObjectGUID" type="base:GUIDType">
+				<xs:annotation>
+					<xs:documentation>Идентификатор объекта жилищного фонда в Реестре адресных объектов ГИС ЖКХ. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AbsenceDeviceInfoVersionGUID" type="base:GUIDType">
+		<xs:annotation>
+			<xs:documentation>Идентификатор версии сведений об отсутствии технической возможности установки приборов учета</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="AbsenceDeviceInfoGUID" type="base:GUIDType">
+		<xs:annotation>
+			<xs:documentation>Идентификатор сведений об отсутствии технической возможности установки приборов учета</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="AnnulAbsenceDeviceInfo">
+		<xs:annotation>
+			<xs:documentation> Аннулирование сведений об отсутствии технической возможности установки ПУ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AbsenceDeviceInfoGUID" type="base:GUIDType">
+				<xs:annotation>
+					<xs:documentation>Идентификатор сведений об отсутствии технической возможности установки приборов учета</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AnnulDate" type="xs:date" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Дата аннулирования сведений</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AbsenceDeviceInfoExportType">
+		<xs:annotation>
+			<xs:documentation>Тип для экспорта сведений об отсутствии технической возможности установки приборов учета</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AbsenceDeviceInfoGUID" type="base:GUIDType">
+				<xs:annotation>
+					<xs:documentation>Идентификатор сведений об отсутствии технической возможности установки приборов учета</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AbsenceDeviceInfoVersionGUID" type="base:GUIDType">
+				<xs:annotation>
+					<xs:documentation>Идентификатор версии сведений об отсутствии технической возможности установки приборов учета</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ActCreateDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата составления акта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ActExpireDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дата окончания действия акта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ActAnnulDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дата анннулирования акта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DeviceTypeBase" type="nsi-base:nsiRef">
+				<xs:annotation>
+					<xs:documentation>Ссылка на НСИ "Тип прибора учета" (реестровый номер 27).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MunicipalResources" type="nsi-base:nsiRef" maxOccurs="2">
+				<xs:annotation>
+					<xs:documentation>Виды КУ. Ссылка на НСИ "Вид коммунального ресурса" (реестровый номер 2)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DeviceInstallBlockingReason" type="nsi-base:nsiRef">
+				<xs:annotation>
+					<xs:documentation>Ссылка на НСИ "Критерии отсутствия технической возможности установки приборов учета" (реестровый номер 379).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ExamineOrg" type="organizations-registry-base:RegOrgType">
+				<xs:annotation>
+					<xs:documentation>Организация, проводившая обследование</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ActAbsenceDevice" type="base:AttachmentType" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Файл акта об отсутствии технической возможности установки приборов учета</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ObjectAbsenceDeviceInfo" type="tns:ObjectAbsenceDeviceInfo" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Объект жилищного фонда</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StatusRootDoc">
+				<xs:annotation>
+					<xs:documentation>Статус информации</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Active"/>
+						<xs:enumeration value="Archival"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="StatusVersion">
+				<xs:annotation>
+					<xs:documentation>Статус версии</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Active"/>
+						<xs:enumeration value="Archival"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="UpdateDateTime" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Дата модификации</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OwnerOrg">
+				<xs:annotation>
+					<xs:documentation>Организация, создавшая запись</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="organizations-registry-base:RegOrgType"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ObjectAbsenceDeviceInfoImp">
+		<xs:annotation>
+			<xs:documentation>Объект жилищного фонда для импорта</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="HMObjectGUID" type="base:GUIDType">
+				<xs:annotation>
+					<xs:documentation>Идентификатор объекта жилищного фонда в Реестре адресных объектов ГИС ЖКХ. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AddressType" type="base:GUIDType">
+				<xs:annotation>
+					<xs:documentation>Тип объекта. 
+					Возможные значения:
+						Apartment - Помещение/блок,
+						Room - Комната,
+						House - Дом
+					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
