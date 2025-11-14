@@ -431,8 +431,7 @@
 	</xs:element>
 	<xs:element name="ErrorMessage" type="tns:ErrorMessageType">
 		<xs:annotation>
-			<xs:documentation>Описание ошибок контролей или бизнес-процесса. Элемент не заполянется. Оставлен для совместимости 
-</xs:documentation>
+			<xs:documentation>Описание ошибок контролей или бизнес-процесса. </xs:documentation>
 		</xs:annotation>
 	</xs:element>
 	<xs:complexType name="ErrorMessageType">
