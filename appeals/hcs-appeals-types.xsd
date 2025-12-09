@@ -1,32 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:tns="http://dom.gosuslugi.ru/schema/integration/appeals/"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:base="http://dom.gosuslugi.ru/schema/integration/base/"
-	xmlns:premises-base="http://dom.gosuslugi.ru/schema/integration/premises-base/"
-	xmlns:bills-base="http://dom.gosuslugi.ru/schema/integration/bills-base/"
-	xmlns:account-base="http://dom.gosuslugi.ru/schema/integration/account-base/"
-	xmlns:nsi-base="http://dom.gosuslugi.ru/schema/integration/nsi-base/"
-	xmlns:organizations-base="http://dom.gosuslugi.ru/schema/integration/organizations-base/"
-	xmlns:organizations-registry-base="http://dom.gosuslugi.ru/schema/integration/organizations-registry-base/"
-	xmlns:individual-registry-base="http://dom.gosuslugi.ru/schema/integration/individual-registry-base/"
-	targetNamespace="http://dom.gosuslugi.ru/schema/integration/appeals/"
-	elementFormDefault="qualified" attributeFormDefault="unqualified" version="14.8.0.1">
-	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/base/"
-		schemaLocation="../lib/hcs-base.xsd"/>
-	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/premises-base/"
-		schemaLocation="../lib/hcs-premises-base.xsd"/>
-	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/bills-base/"
-		schemaLocation="../lib/hcs-bills-base.xsd"/>
-	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/account-base/"
-		schemaLocation="../lib/hcs-account-base.xsd"/>
-	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/nsi-base/"
-		schemaLocation="../lib/hcs-nsi-base.xsd"/>
-	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/organizations-base/"
-		schemaLocation="../lib/hcs-organizations-base.xsd"/>
-	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/individual-registry-base/"
-		schemaLocation="../lib/hcs-individual-registry-base.xsd"/>
-	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/organizations-registry-base/"
-		schemaLocation="../lib/hcs-organizations-registry-base.xsd"/>
+<xs:schema xmlns:tns="http://dom.gosuslugi.ru/schema/integration/appeals/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:base="http://dom.gosuslugi.ru/schema/integration/base/" xmlns:premises-base="http://dom.gosuslugi.ru/schema/integration/premises-base/" xmlns:bills-base="http://dom.gosuslugi.ru/schema/integration/bills-base/" xmlns:account-base="http://dom.gosuslugi.ru/schema/integration/account-base/" xmlns:nsi-base="http://dom.gosuslugi.ru/schema/integration/nsi-base/" xmlns:organizations-base="http://dom.gosuslugi.ru/schema/integration/organizations-base/" xmlns:organizations-registry-base="http://dom.gosuslugi.ru/schema/integration/organizations-registry-base/" xmlns:individual-registry-base="http://dom.gosuslugi.ru/schema/integration/individual-registry-base/" targetNamespace="http://dom.gosuslugi.ru/schema/integration/appeals/" elementFormDefault="qualified" attributeFormDefault="unqualified" version="15.11.0.0">
+	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/base/" schemaLocation="../lib/hcs-base.xsd"/>
+	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/premises-base/" schemaLocation="../lib/hcs-premises-base.xsd"/>
+	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/bills-base/" schemaLocation="../lib/hcs-bills-base.xsd"/>
+	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/account-base/" schemaLocation="../lib/hcs-account-base.xsd"/>
+	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/nsi-base/" schemaLocation="../lib/hcs-nsi-base.xsd"/>
+	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/organizations-base/" schemaLocation="../lib/hcs-organizations-base.xsd"/>
+	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/individual-registry-base/" schemaLocation="../lib/hcs-individual-registry-base.xsd"/>
+	<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/organizations-registry-base/" schemaLocation="../lib/hcs-organizations-registry-base.xsd"/>
 	<!--Операции с обращениями-->
 	<!--Выгрузка обращений и ответов на обращения-->
 	<xs:element name="exportAppealRequest">
@@ -49,8 +30,7 @@
 								<xs:annotation>
 									<xs:documentation>По бизнес-атрибутам обращения</xs:documentation>
 								</xs:annotation>
-								<xs:element name="AppealNumber" type="tns:AppealNumberType"
-									maxOccurs="1000">
+								<xs:element name="AppealNumber" type="tns:AppealNumberType" maxOccurs="1000">
 									<xs:annotation>
 										<xs:documentation>Номер обращения</xs:documentation>
 									</xs:annotation>
@@ -66,15 +46,12 @@
 											<xs:documentation>Дата создания обращения - конец диапазона</xs:documentation>
 										</xs:annotation>
 									</xs:element>
-									<xs:element name="AppealTheme" type="nsi-base:nsiRef"
-										minOccurs="0">
+									<xs:element name="AppealTheme" type="nsi-base:nsiRef" minOccurs="0">
 										<xs:annotation>
 											<xs:documentation>Тема обращения (НСИ 220)</xs:documentation>
 										</xs:annotation>
 									</xs:element>
-									<xs:element name="FIASHouseGuid"
-										type="premises-base:FIASHouseGUIDType" minOccurs="0"
-										maxOccurs="unbounded">
+									<xs:element name="FIASHouseGuid" type="premises-base:FIASHouseGUIDType" minOccurs="0" maxOccurs="unbounded">
 										<xs:annotation>
 											<xs:documentation>Глобальный уникальный идентификатор дома по ФИАС</xs:documentation>
 										</xs:annotation>
@@ -85,35 +62,30 @@
 										</xs:annotation>
 										<xs:complexType>
 											<xs:sequence>
-												<xs:element name="NotSent" type="xs:boolean"
-												fixed="true" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Не отправлено (элемент не используется в Системе - обращения, имеющие статус "Не отправлено", не экспортируются)</xs:documentation>
-												</xs:annotation>
+												<xs:element name="NotSent" type="xs:boolean" fixed="true" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>Не отправлено (элемент не используется в Системе - обращения, имеющие статус "Не отправлено", не экспортируются)</xs:documentation>
+													</xs:annotation>
 												</xs:element>
-												<xs:element name="Sent" type="xs:boolean"
-												fixed="true" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Отправлено</xs:documentation>
-												</xs:annotation>
+												<xs:element name="Sent" type="xs:boolean" fixed="true" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>Отправлено</xs:documentation>
+													</xs:annotation>
 												</xs:element>
-												<xs:element name="InWork" type="xs:boolean"
-												fixed="true" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>В работе</xs:documentation>
-												</xs:annotation>
+												<xs:element name="InWork" type="xs:boolean" fixed="true" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>В работе</xs:documentation>
+													</xs:annotation>
 												</xs:element>
-												<xs:element name="Executed" type="xs:boolean"
-												fixed="true" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Исполнено</xs:documentation>
-												</xs:annotation>
+												<xs:element name="Executed" type="xs:boolean" fixed="true" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>Исполнено</xs:documentation>
+													</xs:annotation>
 												</xs:element>
-												<xs:element name="Withdrawn" type="xs:boolean"
-												fixed="true" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Отозвано</xs:documentation>
-												</xs:annotation>
+												<xs:element name="Withdrawn" type="xs:boolean" fixed="true" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>Отозвано</xs:documentation>
+													</xs:annotation>
 												</xs:element>
 											</xs:sequence>
 										</xs:complexType>
@@ -153,8 +125,7 @@
 								</xs:sequence>
 							</xs:choice>
 						</xs:choice>
-						<xs:element name="IncludeHCSAppeals" type="xs:boolean" fixed="true"
-							minOccurs="0">
+						<xs:element name="IncludeHCSAppeals" type="xs:boolean" fixed="true" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Признак "Включать в экспорт обращения, сформированные ГИС ЖКХ" (для запросов по бизнес-атрибутам обращения или ответа) </xs:documentation>
 							</xs:annotation>
@@ -173,8 +144,7 @@
 			<xs:complexContent>
 				<xs:extension base="base:BaseType">
 					<xs:choice>
-						<xs:element name="Appeal" type="tns:exportAppealResultType"
-							maxOccurs="unbounded">
+						<xs:element name="Appeal" type="tns:exportAppealResultType" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>Обращение</xs:documentation>
 							</xs:annotation>
@@ -259,8 +229,7 @@
 					<xs:documentation>Текст обращения</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Attachment" type="base:AttachmentType" minOccurs="0"
-				maxOccurs="unbounded">
+			<xs:element name="Attachment" type="base:AttachmentType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Прикрепленные файлы</xs:documentation>
 				</xs:annotation>
@@ -276,8 +245,7 @@
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Organization"
-							type="organizations-registry-base:RegOrgType" minOccurs="0">
+						<xs:element name="Organization" type="organizations-registry-base:RegOrgType" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Организация, выполнившая действие по обращению</xs:documentation>
 							</xs:annotation>
@@ -296,18 +264,15 @@
 									<xs:complexContent>
 										<xs:extension base="tns:AnswerInfoType">
 											<xs:sequence>
-												<xs:element name="AnswerIsSent" type="xs:boolean"
-												fixed="true" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Ответ отправлен</xs:documentation>
-												</xs:annotation>
+												<xs:element name="AnswerIsSent" type="xs:boolean" fixed="true" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>Ответ отправлен</xs:documentation>
+													</xs:annotation>
 												</xs:element>
-												<xs:element name="SignedAttachments"
-												type="base:SignedAttachmentType" minOccurs="0"
-												maxOccurs="unbounded">
-												<xs:annotation>
-												<xs:documentation>Прикрепленные файлы с открепленной (detached) подписью</xs:documentation>
-												</xs:annotation>
+												<xs:element name="SignedAttachments" type="base:SignedAttachmentType" minOccurs="0" maxOccurs="unbounded">
+													<xs:annotation>
+														<xs:documentation>Прикрепленные файлы с открепленной (detached) подписью</xs:documentation>
+													</xs:annotation>
 												</xs:element>
 											</xs:sequence>
 										</xs:extension>
@@ -326,25 +291,21 @@
 											</xs:annotation>
 											<xs:complexType>
 												<xs:complexContent>
-												<xs:extension
-												base="organizations-registry-base:RegOrgType"/>
+													<xs:extension base="organizations-registry-base:RegOrgType"/>
 												</xs:complexContent>
 											</xs:complexType>
 										</xs:element>
-										<xs:element name="Comment" type="tns:String1000Type"
-											minOccurs="0">
+										<xs:element name="Comment" type="tns:String1000Type" minOccurs="0">
 											<xs:annotation>
 												<xs:documentation>Комментарий</xs:documentation>
 											</xs:annotation>
 										</xs:element>
-										<xs:element name="Attachment" type="base:AttachmentType"
-											minOccurs="0" maxOccurs="unbounded">
+										<xs:element name="Attachment" type="base:AttachmentType" minOccurs="0" maxOccurs="unbounded">
 											<xs:annotation>
 												<xs:documentation>Прикрепленные файлы</xs:documentation>
 											</xs:annotation>
 										</xs:element>
-										<xs:element name="AnswererGUID" type="base:GUIDType"
-											minOccurs="0">
+										<xs:element name="AnswererGUID" type="base:GUIDType" minOccurs="0">
 											<xs:annotation>
 												<xs:documentation>Идентификатор исполнителя по обращению</xs:documentation>
 											</xs:annotation>
@@ -382,31 +343,27 @@
 								</xs:annotation>
 								<xs:complexType>
 									<xs:choice>
-										<xs:element name="InformationIsReceived" type="xs:boolean"
-											fixed="true">
+										<xs:element name="InformationIsReceived" type="xs:boolean" fixed="true">
 											<xs:annotation>
 												<xs:documentation>Необходимая информация получена</xs:documentation>
 											</xs:annotation>
 										</xs:element>
 										<xs:sequence>
 											<xs:choice>
-												<xs:element name="AnswerIsPartlyReceived"
-												type="xs:boolean" fixed="true">
-												<xs:annotation>
-												<xs:documentation>Необходимая информация получена частично</xs:documentation>
-												</xs:annotation>
+												<xs:element name="AnswerIsPartlyReceived" type="xs:boolean" fixed="true">
+													<xs:annotation>
+														<xs:documentation>Необходимая информация получена частично</xs:documentation>
+													</xs:annotation>
 												</xs:element>
-												<xs:element name="AnswerIsNotSatisfied"
-												type="xs:boolean" fixed="true">
-												<xs:annotation>
-												<xs:documentation>Ответом не удовлетворен</xs:documentation>
-												</xs:annotation>
+												<xs:element name="AnswerIsNotSatisfied" type="xs:boolean" fixed="true">
+													<xs:annotation>
+														<xs:documentation>Ответом не удовлетворен</xs:documentation>
+													</xs:annotation>
 												</xs:element>
 											</xs:choice>
-											<xs:element name="DeclineComment"
-												type="tns:String1000Type">
+											<xs:element name="DeclineComment" type="tns:String1000Type">
 												<xs:annotation>
-												<xs:documentation>Отзыв</xs:documentation>
+													<xs:documentation>Отзыв</xs:documentation>
 												</xs:annotation>
 											</xs:element>
 										</xs:sequence>
@@ -500,7 +457,7 @@ Executed - Исполнено Withdrawn - Отозвано </xs:documentation>
 	<!--Загрузка ответов на обращения-->
 	<xs:element name="importAnswerRequest">
 		<xs:annotation>
-			<xs:documentation>Импорт ответов на обращения. Доступны версии 12.2.0.13, 13.2.1.0</xs:documentation>
+			<xs:documentation>Импорт ответов на обращения. Доступны версии 12.2.0.13, 13.2.1.0, 15.11.0.0</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -517,13 +474,12 @@ Executed - Исполнено Withdrawn - Отозвано </xs:documentation>
 										<xs:choice>
 											<xs:element name="AppealGUID" type="base:GUIDType">
 												<xs:annotation>
-												<xs:documentation>Идентификатор обращения в системе ГИС ЖКХ</xs:documentation>
+													<xs:documentation>Идентификатор обращения в системе ГИС ЖКХ</xs:documentation>
 												</xs:annotation>
 											</xs:element>
-											<xs:element name="AppealNumber"
-												type="tns:AppealNumberType">
+											<xs:element name="AppealNumber" type="tns:AppealNumberType">
 												<xs:annotation>
-												<xs:documentation>Номер обращения</xs:documentation>
+													<xs:documentation>Номер обращения</xs:documentation>
 												</xs:annotation>
 											</xs:element>
 										</xs:choice>
@@ -535,61 +491,53 @@ Executed - Исполнено Withdrawn - Отозвано </xs:documentation>
 										<xs:complexType>
 											<xs:sequence>
 												<xs:element ref="base:TransportGUID"/>
-												<xs:element name="AnswerGUID" type="base:GUIDType"
-												minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Идентификатор ответа. Заполняется при изменении ранее созданного ответа</xs:documentation>
-												</xs:annotation>
+												<xs:element name="AnswerGUID" type="base:GUIDType" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>Идентификатор ответа. Заполняется при изменении ранее созданного ответа</xs:documentation>
+													</xs:annotation>
 												</xs:element>
 												<xs:element name="AnswererGUID" type="base:GUIDType">
-												<xs:annotation>
-												<xs:documentation>Идентификатор исполнителя по обращению</xs:documentation>
-												</xs:annotation>
+													<xs:annotation>
+														<xs:documentation>Идентификатор исполнителя по обращению</xs:documentation>
+													</xs:annotation>
 												</xs:element>
 												<xs:choice>
-												<xs:sequence>
-												<xs:element name="LoadAnswer" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Создание / изменение  ответа</xs:documentation>
-												</xs:annotation>
-												<xs:complexType>
-												<xs:sequence>
-												<xs:element name="AnswerText"
-												type="tns:String10000Type">
-												<xs:annotation>
-												<xs:documentation>Текст ответа</xs:documentation>
-												</xs:annotation>
-												</xs:element>
-												<xs:element name="Attachment"
-												type="base:AttachmentType" minOccurs="0"
-												maxOccurs="unbounded">
-												<xs:annotation>
-												<xs:documentation>Прикрепленные файлы</xs:documentation>
-												</xs:annotation>
-												</xs:element>
-												<xs:element name="SignedAttachments"
-												type="base:SignedAttachmentType" minOccurs="0"
-												maxOccurs="unbounded">
-												<xs:annotation>
-												<xs:documentation>Прикрепленные файлы с открепленной (detached) подписью</xs:documentation>
-												</xs:annotation>
-												</xs:element>
-												</xs:sequence>
-												</xs:complexType>
-												</xs:element>
-												<xs:element name="SendAnswer" type="xs:boolean"
-												fixed="true" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Отправка ответа</xs:documentation>
-												</xs:annotation>
-												</xs:element>
-												</xs:sequence>
-												<xs:element name="DeleteAnswer" type="xs:boolean"
-												fixed="true">
-												<xs:annotation>
-												<xs:documentation>Удаление ответа</xs:documentation>
-												</xs:annotation>
-												</xs:element>
+													<xs:sequence>
+														<xs:element name="LoadAnswer" minOccurs="0">
+															<xs:annotation>
+																<xs:documentation>Создание / изменение  ответа</xs:documentation>
+															</xs:annotation>
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element name="AnswerText" type="tns:String10000Type">
+																		<xs:annotation>
+																			<xs:documentation>Текст ответа</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="Attachment" type="base:AttachmentType" minOccurs="0" maxOccurs="unbounded">
+																		<xs:annotation>
+																			<xs:documentation>Прикрепленные файлы</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																	<xs:element name="SignedAttachments" type="base:SignedAttachmentType" minOccurs="0" maxOccurs="unbounded">
+																		<xs:annotation>
+																			<xs:documentation>Прикрепленные файлы с открепленной (detached) подписью</xs:documentation>
+																		</xs:annotation>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+														<xs:element name="SendAnswer" type="xs:boolean" fixed="true" minOccurs="0">
+															<xs:annotation>
+																<xs:documentation>Отправка ответа</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+													</xs:sequence>
+													<xs:element name="DeleteAnswer" type="xs:boolean" fixed="true">
+														<xs:annotation>
+															<xs:documentation>Удаление ответа</xs:documentation>
+														</xs:annotation>
+													</xs:element>
 												</xs:choice>
 											</xs:sequence>
 										</xs:complexType>
@@ -623,19 +571,17 @@ Executed - Исполнено Withdrawn - Отозвано </xs:documentation>
 											</xs:annotation>
 											<xs:complexType>
 												<xs:sequence>
-												<xs:element name="AnswererGUID"
-												type="base:GUIDType">
-												<xs:annotation>
-												<xs:documentation>Идентификатор исполнителя по обращению</xs:documentation>
-												</xs:annotation>
-												</xs:element>
-												<xs:element name="DateOfAppointment"
-												type="xs:date" minOccurs="0">
-												<xs:annotation>
-												<xs:documentation>Плановая дата исполнения
+													<xs:element name="AnswererGUID" type="base:GUIDType">
+														<xs:annotation>
+															<xs:documentation>Идентификатор исполнителя по обращению</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="DateOfAppointment" type="xs:date" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Плановая дата исполнения
 Заполняется при первичном назначении исполнителя</xs:documentation>
-												</xs:annotation>
-												</xs:element>
+														</xs:annotation>
+													</xs:element>
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>
@@ -645,23 +591,21 @@ Executed - Исполнено Withdrawn - Отозвано </xs:documentation>
 											</xs:annotation>
 											<xs:complexType>
 												<xs:sequence>
-												<xs:element name="AnswererGUID"
-												type="base:GUIDType">
-												<xs:annotation>
-												<xs:documentation>Идентификатор исполнителя по обращению</xs:documentation>
-												</xs:annotation>
-												</xs:element>
+													<xs:element name="AnswererGUID" type="base:GUIDType">
+														<xs:annotation>
+															<xs:documentation>Идентификатор исполнителя по обращению</xs:documentation>
+														</xs:annotation>
+													</xs:element>
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>
-										<xs:element name="RedirectAppeal" minOccurs="0"
-											maxOccurs="unbounded">
+										<xs:element name="RedirectAppeal" minOccurs="0" maxOccurs="unbounded">
 											<xs:annotation>
 												<xs:documentation>Переадресация обращения другой организации</xs:documentation>
 											</xs:annotation>
 											<xs:complexType>
 												<xs:complexContent>
-												<xs:extension base="tns:RedirectAppealType"/>
+													<xs:extension base="tns:RedirectAppealType"/>
 												</xs:complexContent>
 											</xs:complexType>
 										</xs:element>
@@ -671,7 +615,7 @@ Executed - Исполнено Withdrawn - Отозвано </xs:documentation>
 											</xs:annotation>
 											<xs:complexType>
 												<xs:complexContent>
-												<xs:extension base="tns:RollOverAppealType"/>
+													<xs:extension base="tns:RollOverAppealType"/>
 												</xs:complexContent>
 											</xs:complexType>
 										</xs:element>
@@ -681,17 +625,22 @@ Executed - Исполнено Withdrawn - Отозвано </xs:documentation>
 											</xs:annotation>
 											<xs:complexType>
 												<xs:sequence>
-												<xs:element name="Cause" type="xs:string">
-												<xs:annotation>
-												<xs:documentation>Причина, по которой ответ на обращение не требуется</xs:documentation>
-												</xs:annotation>
-												</xs:element>
-												<xs:element name="AnswererGUID"
-												type="base:GUIDType">
-												<xs:annotation>
-												<xs:documentation>Идентификатор исполнителя по обращению</xs:documentation>
-												</xs:annotation>
-												</xs:element>
+													<xs:element name="Cause">
+														<xs:annotation>
+															<xs:documentation>Причина, по которой ответ на обращение не требуется</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="1000"/>
+																<xs:minLength value="20"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="AnswererGUID" type="base:GUIDType">
+														<xs:annotation>
+															<xs:documentation>Идентификатор исполнителя по обращению</xs:documentation>
+														</xs:annotation>
+													</xs:element>
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>
@@ -757,14 +706,12 @@ Executed - Исполнено Withdrawn - Отозвано </xs:documentation>
 				<xs:extension base="base:BaseAsyncResponseType">
 					<xs:choice minOccurs="0">
 						<xs:element ref="base:ErrorMessage"/>
-						<xs:element name="ImportResult" type="base:CommonResultType"
-							maxOccurs="unbounded">
+						<xs:element name="ImportResult" type="base:CommonResultType" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>Результат импорта</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="ExportAppealResult" type="tns:exportAppealResultType"
-							maxOccurs="unbounded">
+						<xs:element name="ExportAppealResult" type="tns:exportAppealResultType" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>Экспортируемое обращение</xs:documentation>
 							</xs:annotation>
@@ -792,8 +739,7 @@ Executed - Исполнено Withdrawn - Отозвано </xs:documentation>
 					<xs:documentation>Текст ответа</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Attachment" type="base:AttachmentType" minOccurs="0"
-				maxOccurs="unbounded">
+			<xs:element name="Attachment" type="base:AttachmentType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Прикрепленные файлы</xs:documentation>
 				</xs:annotation>
@@ -844,8 +790,7 @@ Executed - Исполнено Withdrawn - Отозвано </xs:documentation>
 					<xs:documentation>Текст ответа на обращение</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Attachment" type="base:AttachmentType" minOccurs="0"
-				maxOccurs="unbounded">
+			<xs:element name="Attachment" type="base:AttachmentType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Прикрепленные файлы</xs:documentation>
 				</xs:annotation>
@@ -992,13 +937,18 @@ Executed - Исполнено Withdrawn - Отозвано </xs:documentation>
 					</xs:complexContent>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="Comment" type="tns:String1000Type" minOccurs="0">
+			<xs:element name="Comment">
 				<xs:annotation>
 					<xs:documentation>Комментарий</xs:documentation>
 				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1000"/>
+						<xs:minLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
 			</xs:element>
-			<xs:element name="Attachment" type="base:AttachmentType" minOccurs="0"
-				maxOccurs="unbounded">
+			<xs:element name="Attachment" type="base:AttachmentType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Прикрепленные файлы</xs:documentation>
 				</xs:annotation>
@@ -1020,13 +970,18 @@ Executed - Исполнено Withdrawn - Отозвано </xs:documentation>
 					<xs:documentation>Дата исполнения (продления)</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Comment" type="tns:String1000Type">
+			<xs:element name="Comment">
 				<xs:annotation>
 					<xs:documentation>Комментарий</xs:documentation>
 				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1000"/>
+						<xs:minLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
 			</xs:element>
-			<xs:element name="Attachment" type="base:AttachmentType" minOccurs="0"
-				maxOccurs="unbounded">
+			<xs:element name="Attachment" type="base:AttachmentType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Прикрепленные файлы</xs:documentation>
 				</xs:annotation>
