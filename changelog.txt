@@ -1,4 +1,34 @@
 ===========================================================
+Изменения в форматах данных от версии 16.1.0.0 до версии 16.2.0.0
+===========================================================
+- NEWHCS-26449
+1. Для операции импорта итогов голосования, проведенного с использованием системы, отличной от ГИС ЖКХ (importExternalVotingProtocolRequest):
+1.1. исключены контроли INT023074, INT0230785 
+1.2. добавлены контроли INT023094, INT023095
+1.3. изменен контроль INT023091
+2. Для операции импорта протокола ОСС (importVotingProtocolData) добавлены контроли INT023072, INT023073, INT023046
+
+- NEWHCS-26452 (начиная с версии 16.4)
+1. В операции импорта письменных отказов собственников (importOwnerRefusal) изменены контоли INT023023, INT023046
+2. В операции импорта (importOwnerRefusalRequest) в ветке OwnerRefusal/Publish messageGUID для первичного импорта отказа заменен на votingGUID
+3. В операции импорта (importOwnerDecisionRequest и importOwnerRefusalRequest) в сведениях о собственнике для физического лица в элементе OwnerInd элемент individual-registry-base:SNILS (СНИЛС собственника ФЛ) сделан обязательным
+4. В операции импорта (importOwnerRefusalRequest/OwnerRefusal/Publish И importOwnerRefusalRequest/OwnerRefusal/Edit) в письменном отказе собственника RefusalAttachments теперь обязательный 
+
+- NEWHCS-26451 (начиная с версии 16.4)
+1. Для операции импорта (importOwnerDecisionData) добавлено действие DeleteDecision с указанием причины удаления
+2. Для операции импорта (importOwnerDecisionData) 
+2.1. удален контроль INT023041
+2.2. добавлен контроль INT023060, INT023061
+2.3 элементы protocolGUID и messageGUID заменены на votingGUID
+
+- NEWHCS-26553 (начиная с версии 16.4)
+1. Для операции импорта (importExaminations) добавлена поддерживаемая версия 16.4.0.0
+1.1. добавлены элементы MeansDistantInteraction, DecisionMakerPerson, DecisionMakerPersonPosition, DecisionMadePlace, EventActions, ProcuracyOffice, RiskCategoryObject, HazardClassObject, SNILS, SignatoryPerson, SignatoryPersonPosition, ViolationReviewResult, ViolationReviewResultFile 
+2. Для операции экспорта (exportExaminations) добавлена поддерживаемая версия 16.4.0.0, в которой: 
+2.1. добавлен контроль INT017089 
+2.2. добавлены элементы MeansDistantInteraction, DecisionMakerPerson, DecisionMakerPersonPosition, DecisionMadePlace, EventActions, ProcuracyOffice, RiskCategoryObject, HazardClassObject, SNILS, SignatoryPerson, SignatoryPersonPosition, ViolationReviewResult, ViolationReviewResultFile
+
+===========================================================
 Изменения в форматах данных от версии 15.12.0.0 до версии 16.1.0.0
 ===========================================================
 - NEWHCS-26447
