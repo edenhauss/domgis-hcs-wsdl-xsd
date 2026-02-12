@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2025 (x64) (https://www.altova.com) by  () -->
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dom.gosuslugi.ru/schema/integration/payment-service-async/" xmlns:base="http://dom.gosuslugi.ru/schema/integration/base/" xmlns:pm="http://dom.gosuslugi.ru/schema/integration/payment/" xmlns:ns="http://www.w3.org/2000/09/xmldsig#" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://dom.gosuslugi.ru/schema/integration/account-base/" xmlns:ns2="http://dom.gosuslugi.ru/schema/integration/individual-registry-base/" xmlns:ns3="http://dom.gosuslugi.ru/schema/integration/nsi-base/" xmlns:ns4="http://dom.gosuslugi.ru/schema/integration/organizations-registry-base/" xmlns:ns5="http://dom.gosuslugi.ru/schema/integration/payments-base/" xmlns:ns6="http://dom.gosuslugi.ru/schema/integration/bills-base/" xmlns:ns7="http://dom.gosuslugi.ru/schema/integration/organizations-base/" xmlns:ns8="http://dom.gosuslugi.ru/schema/integration/premises-base/" targetNamespace="http://dom.gosuslugi.ru/schema/integration/payment-service-async/">
 	<wsdl:types>
-		<xs:schema version="13.0.1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+		<xs:schema version="15.12.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 			<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/payment/" schemaLocation="hcs-payment-types.xsd"/>
 			<xs:import namespace="http://dom.gosuslugi.ru/schema/integration/base/" schemaLocation="../lib/hcs-base.xsd"/>
 		</xs:schema>
@@ -33,8 +34,14 @@
 	<wsdl:message name="exportPaymentDocumentDetailsRequest">
 		<wsdl:part name="exportPaymentDocumentDetailsRequest" element="pm:exportPaymentDocumentDetailsRequest"/>
 	</wsdl:message>
+	<wsdl:message name="exportForPaymentAggregatorRequest">
+		<wsdl:part name="exportForPaymentAggregatorRequest" element="pm:exportForPaymentAggregatorRequest"/>
+	</wsdl:message>
 	<wsdl:message name="importSupplierNotificationsOfOrderExecutionRequest">
 		<wsdl:part name="importSupplierNotificationsOfOrderExecutionRequest" element="pm:importSupplierNotificationsOfOrderExecutionRequest"/>
+	</wsdl:message>
+		<wsdl:message name="exportForPaymentAggregatorResult">
+		<wsdl:part name="AckRequest" element="base:AckRequest"/>
 	</wsdl:message>
 	<wsdl:portType name="PaymentPortsTypeAsync">
 		<wsdl:operation name="importNotificationsOfOrderExecution">
@@ -58,6 +65,11 @@
 		<wsdl:operation name="exportPaymentDocumentDetails">
 			<wsdl:input message="tns:exportPaymentDocumentDetailsRequest"/>
 			<wsdl:output message="tns:AckRequest"/>
+			<wsdl:fault name="FaultName" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="exportForPaymentAggregator">
+			<wsdl:input message="tns:exportForPaymentAggregatorRequest"/>
+			<wsdl:output message="tns:exportForPaymentAggregatorResult"/>
 			<wsdl:fault name="FaultName" message="tns:Fault"/>
 		</wsdl:operation>
 		<wsdl:operation name="importSupplierNotificationsOfOrderExecution">
@@ -113,6 +125,20 @@
 		</wsdl:operation>
 		<wsdl:operation name="exportPaymentDocumentDetails">
 			<soap:operation soapAction="urn:exportPaymentDocumentDetails"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:RequestHeader" part="Header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+				<soap:header message="tns:ResultHeader" part="Header" use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="FaultName">
+				<soap:fault name="FaultName" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="exportForPaymentAggregator">
+			<soap:operation soapAction="urn:exportForPaymentAggregator"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 				<soap:header message="tns:RequestHeader" part="Header" use="literal"/>
