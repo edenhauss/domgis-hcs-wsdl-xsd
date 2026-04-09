@@ -1,5 +1,63 @@
 ===========================================================
-Изменения в форматах данных от версии 16.1.0.0 до версии 16.2.0.0
+Изменения в форматах данных от версии 16.3.0.0 до версии 16.4.0.0
+===========================================================
+
+- NEWHCS-26521 
+1. Для операции импорта сообщения о проведении ОСС (importVotingMessageRequest)
+1.1. Добавлен контроль INT023093 
+1.2. Изменен контроль INT023062 
+
+- NEWHCS-28442 (начиная с версии 16.5)
+1. Для операции импорта сообщений (importVotingMessageRequest) обновлена версия на 16.5.0.0, в которой
+1.1. Добавлен обязательный параметр InfoReview для очных, Очно-заочных и Заочных (опросным путем)
+2. Для операции экспорта сообщений (exportVotingMessageResultType) 
+2.1. Убрано фиксированное значение версии 
+2.2. Добавлен необязательный параметр InfoReview для очных, Очно-заочных и Заочных (опросным путем)
+3. Для операции экспорта протоколов (exportVotingProtocolResultType) 
+3.1. Убрано фиксированное значение версии 
+3.2. Добавлен необязательный параметр InfoReview для очных, Очно-заочных и Заочных (опросным путем)
+
+- NEWHCS-28847 (начиная с версии 16.5)
+1. Для операции импорта итогов голосования, проведенного с использованием систем, отличных от ГИС ЖКХ (importExternalVotingProtocolRequest) обновлена версия на 16.5.0.0, в которой:
+1.1. В тип tns:ExternalVotingProtocolType добавлен реквизит Сумма голосов участников tns:AllMembersVotesSum
+1.2. Для Суммы голосов всех собственников tns:AllOwnersVotesSum и Суммы голосов участников tns:AllMembersVotesSum добавлены ограничения по количеству символов
+2. Для операции импорта протоколов по голосованиям, проведенным без помощи системы (importVotingProtocolRequest) обновлена версия на 16.5.0.0, в которой:
+2.1. В тип tns:ProtocolType добавлены реквизиты Сумма голосов всех собственников tns:AllOwnersVotesSum и Сумма голосов участников tns:AllMembersVotesSum
+2.2. В тип tns:VotingResultsImportType добавлен реквизит Сумма голосов участников tns:AllMembersVotesSum
+2.3. Для Суммы голосов всех собственников tns:AllOwnersVotesSum и Суммы голосов участников tns:AllMembersVotesSum добавлены ограничения по количеству символов
+2.4. Добавлен отдельный метод для импорта изменений протокола по голосованию вне системы tns:ChangeVotingResultsImport
+3. Добавлены контроли SRV023026, SRV023037
+
+- NEWHCS-22000 
+1. Для операции импорта решения собственника по вопросоам голосования (importOwnerDecisionData): 
+1.1. Добавлено действие DeleteDecision с указанием причины удаления
+1.2. Добавлены контроли INT023096, INT023097, INT023098, INT023099
+
+- NEWHCS-28801 
+1. Для операций импорта протокола ОСС (importVotingProtocolData), импорта решения собственника по вопросам голосования (importOwnerDecisionData), импорта письменных отказов собственников (importOwnerRefusal), импорта сообщения о проведении ОСС (importVotingMessageRequest), Импорт итогов голосования, проведенного с использованием системы, отличной от ГИС ЖКХ (importExternalVotingProtocolRequest) удалены контроли SRV023063 и SRV023064.
+
+- NEWHCS-26452 
+1. В операции импорта письменных отказов собственников (importOwnerRefusal) изменены контоли INT023023, INT023046
+2. В операции импорта (importOwnerRefusalRequest) в ветке OwnerRefusal/Publish messageGUID для первичного импорта отказа заменен на votingGUID
+3. В операции импорта (importOwnerDecisionRequest и importOwnerRefusalRequest) в сведениях о собственнике для физического лица в элементе OwnerInd элемент individual-registry-base:SNILS (СНИЛС собственника ФЛ) сделан обязательным
+4. В операции импорта (importOwnerRefusalRequest/OwnerRefusal/Publish И importOwnerRefusalRequest/OwnerRefusal/Edit) в письменном отказе собственника RefusalAttachments теперь обязательный 
+
+- NEWHCS-26553 
+1. Для операции импорта (importExaminations) добавлена поддерживаемая версия 16.4.0.0
+1.1. добавлены элементы MeansDistantInteraction, DecisionMakerPerson, DecisionMakerPersonPosition, DecisionMadePlace, EventActions, ProcuracyOffice, RiskCategoryObject, HazardClassObject, SNILS, SignatoryPerson, SignatoryPersonPosition, ViolationReviewResult, ViolationReviewResultFile 
+2. Для операции экспорта (exportExaminations) добавлена поддерживаемая версия 16.4.0.0, в которой: 
+2.1. добавлен контроль INT017089 
+2.2. добавлены элементы MeansDistantInteraction, DecisionMakerPerson, DecisionMakerPersonPosition, DecisionMadePlace, EventActions, ProcuracyOffice, RiskCategoryObject, HazardClassObject, SNILS, SignatoryPerson, SignatoryPersonPosition, ViolationReviewResult, ViolationReviewResultFile
+
+- NEWHCS-26451 
+1. Для операции импорта (importOwnerDecisionData) добавлено действие DeleteDecision с указанием причины удаления
+2. Для операции импорта (importOwnerDecisionData) 
+2.1. удален контроль INT023041
+2.2. добавлен контроль INT023060, INT023061
+2.3 элементы protocolGUID и messageGUID заменены на votingGUID
+
+===========================================================
+Изменения в форматах данных от версии 16.2.0.0 до версии 16.3.0.0
 ===========================================================
 - NEWHCS-28408 
 1. В операции Запрос на импорт сведений о задолженности за ЖКУ (importDebtRequest) элемент JudicalActAttachment (Файл судебного акта) теперь необязательный 
