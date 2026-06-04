@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2025 (x64) (https://www.altova.com) by  () -->
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dom.gosuslugi.ru/schema/integration/device-metering-service-async/" xmlns:dm="http://dom.gosuslugi.ru/schema/integration/device-metering/" xmlns:base="http://dom.gosuslugi.ru/schema/integration/base/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://dom.gosuslugi.ru/schema/integration/device-metering-service-async/">
 	<wsdl:types>
 		<xs:schema version="10.0.1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -33,6 +34,12 @@
 	<wsdl:message name="importMeteringDeviceValuesResult">
 		<wsdl:part name="AckRequest" element="base:AckRequest"/>
 	</wsdl:message>
+	<wsdl:message name="getRequestsStateRequest">
+		<wsdl:part name="getRequestsStateRequest" element="base:getRequestsStateRequest"/>
+	</wsdl:message>
+	<wsdl:message name="getRequestsStateResult">
+		<wsdl:part name="getRequestsStateResult" element="base:getRequestsStateResult"/>
+	</wsdl:message>
 	<wsdl:portType name="DeviceMeteringPortTypesAsync">
 		<wsdl:operation name="importMeteringDeviceValues">
 			<wsdl:documentation>Передать показания ПУ</wsdl:documentation>
@@ -49,6 +56,12 @@
 		<wsdl:operation name="getState">
 			<wsdl:input message="tns:getStateRequest"/>
 			<wsdl:output message="tns:getStateResult"/>
+			<wsdl:fault name="InvalidRequest" message="tns:Fault"/>
+		</wsdl:operation>
+		<wsdl:operation name="getRequestsState">
+			<wsdl:documentation>Получить список обработанных сообщений</wsdl:documentation>
+			<wsdl:input message="tns:getRequestsStateRequest"/>
+			<wsdl:output message="tns:getRequestsStateResult"/>
 			<wsdl:fault name="InvalidRequest" message="tns:Fault"/>
 		</wsdl:operation>
 	</wsdl:portType>
@@ -84,6 +97,20 @@
 		</wsdl:operation>
 		<wsdl:operation name="getState">
 			<soap:operation soapAction="urn:getState"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:RequestHeader" part="Header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+				<soap:header message="tns:ResultHeader" part="Header" use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="InvalidRequest">
+				<soap:fault name="InvalidRequest" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getRequestsState">
+			<soap:operation soapAction="urn:getRequestsState"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 				<soap:header message="tns:RequestHeader" part="Header" use="literal"/>
